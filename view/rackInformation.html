@@ -15,22 +15,58 @@
     <title>Home</title>
 </head>
 <body>
-    <nav class="bar-horizon">
-        <div class="logocoficab">
-            <a href="#"><img src="../img/coficab.png" alt="20px"></a>
-        </div>
-    </nav>
+<nav class="bar-horizon">
+    <div class="logocoficab">
+        <a href="#"><img src="../img/coficab.png" alt="20px"></a>
+    </div>
+</nav>
     
-    <div class="container">
-      <h2>Information for Rack</h2>
-      <ul class="nav nav-pills">
+<div class="container">
+    <h2>Information for Rack</h2>
+     <ul class="nav nav-pills">
         <li><a href="home.html">Home</a></li>
         <li><a href="warehousestatus.html">Warehouse Status</a></li>
         <li class="active"><a href="rackinformation.html">Information for Rack</a></li>
         <li><a href="crud.html">Crud</a></li>
         <li><a href="transactions.html">Transactions</a></li>
-      </ul>
-      <br>
+    </ul>
+    <br>
+
+    <h3>Information for Rack</h3>   
+    <div class="input-group">
+        <span class="input-group-addon">Brouse</span>
+        <input id="filtrar" type="text" class="form-control" placeholder="Enter the search information...">
+    </div>
+    <br>    
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>N°. Spools</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01AA11</td>
+          <td>100</td>
+          <td>Empty</td>
+        </tr>
+        <tr>
+            <td>01AA12</td>
+            <td>100</td>
+            <td>Empty</td>
+        </tr>
+        <tr>
+            <td>01AA13</td>
+            <td>100</td>
+            <td>Empty</td>
+          </tr>
+      </tbody>
+    </table>
+
+    Last Update: <input type="text">
+</div>
     
 </body>
 </html>

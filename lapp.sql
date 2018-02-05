@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2018 at 04:11 PM
+-- Generation Time: Feb 05, 2018 at 05:56 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -55,6 +55,18 @@ CREATE TABLE `racks` (
   `location` varchar(250) NOT NULL,
   `ocupation` int(11) NOT NULL,
   `capacity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `shift` int(11) NOT NULL,
+  `transN` int(11) NOT NULL,
+  `date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

@@ -1,3 +1,11 @@
+<?php
+	include("../model/connection.php");
+
+	$tabla="SELECT id_racks, location, ocupation, capacity FROM racks ";
+	$resultado = $conexion->query($tabla);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +27,11 @@
     <div class="logocoficab">
         <a href="#"><img src="../img/coficab.png" alt="20px"></a>
         <ul class="nav nav-pills">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="warehousestatus.html">Warehouse Status</a></li>
-                <li class="active"><a href="rackinformation.html">Information for Rack</a></li>
-                <li><a href="crud.html">Crud</a></li>
-                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="warehousestatus.php">Warehouse Status</a></li>
+                <li class="active"><a href="rackinformation.php">Information for Rack</a></li>
+                <li><a href="crud.php">Crud</a></li>
+                <li><a href="transactions.php">Transactions</a></li>
             </ul>
             <br>
     </div>
@@ -43,26 +51,23 @@
       <thead>
         <tr>
           <th>Location</th>
-          <th>N°. Spools</th>
-          <th>Status</th>
+          <th>Ocupation</th>
+          <th>Capacity</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>01AA11</td>
-          <td>100</td>
-          <td>Empty</td>
-        </tr>
-        <tr>
-            <td>01AA12</td>
-            <td>100</td>
-            <td>Empty</td>
-        </tr>
-        <tr>
-            <td>01AA13</td>
-            <td>100</td>
-            <td>Empty</td>
-          </tr>
+      <?php
+      while($row= $resultado->fetch_assoc()){
+                ?>
+                <tr>
+                    <!--<td><php echo $row['id_salida']; ?></td>-->
+                    <td><?php echo $row['location']; ?></td>
+                    <td><?php echo $row['ocupation']; ?></td>
+                    <td><?php echo $row['capacity']; ?></td>
+                </tr>
+                <?php
+            }
+        ?>
       </tbody>
     </table>
 

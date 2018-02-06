@@ -12,47 +12,52 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-    <!--Grafics-->
-    <script src="../js/grafics.js"></script>
-=======
-    
->>>>>>> e023d94134845e7adef5ee9c54e4a9ef9bf0058d
-    <title>Home</title>
+    <title>Crud</title>
 </head>
 <body>
 <nav class="bar-horizon">
     <div class="logocoficab">
         <a href="#"><img src="../img/coficab.png" alt="20px"></a>
-      
-            <ul class="nav nav-pills">
-                <li class="active"><a href="home.html">Home</a></li>
-                <li><a href="warehousestatus.html">Warehouse Status</a></li>
-                <li><a href="rackinformation.html">Information for Rack</a></li>
-                <li ><a href="crud.html">Crud</a></li>
-                <li><a href="transactions.html">Transactions</a></li>
+        <ul class="nav nav-pills">
+                <li><a href="home.php">Home</a></li>
+                <li><a href="warehousestatus.php">Warehouse Status</a></li>
+                <li><a href="rackinformation.php">Information for Rack</a></li>
+                <li class="active"><a href="crud.php">Crud</a></li>
+                <li><a href="transactions.php">Transactions</a></li>
             </ul>
-     <br>
-
+            <br>
     </div>
-    
-   
 </nav>
-
     
 <div class="container">
-    <h2>Home</h2>
-    <canvas id="myCanvas"></canvas>
-    <script type="text/javascript" src="../js/script.js"></script>
-
-    </div>
+    <h2>Crud</h2>
     
 
+    <h3>Crud</h3>    
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Ocupation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01AA11</td>
+          <td>3</td>
+        </tr>
+        <tr>
+            <td>01AA12</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>01AA13</td>
+            <td>5</td>
+          </tr>
+      </tbody>
+    </table>
 
-
-
+</div>
     
-
-
 </body>
 </html>

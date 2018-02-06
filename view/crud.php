@@ -79,30 +79,6 @@
       
     </table>
     <button type="button" class="button">New</button> <input type="submit" class="button" value="Save">
-   
-   <?
-
-$id_crud = $_POST['id_crud'];
-$location = $_POST['location'];
-$capacity = $_POST['capacity'];
-
-
-$query .= "INSERT INTO crud (id_crud, location, capacity) VALUES ";
-
-for($i=0;$i<$id_crud;$i++){
-
-$query .= "('" . $id_crud[$i] . "','" . $location[$i] . "','" . $capacity[$i] . "')";
-
-//$query .= ($i<$total-1) ? "," : "";
-
-}
-
-
-echo $query;
-
-mysql_query($query) or die(mysql_error());
-
-?> 
     <script type="text/javascript" src="../js/taba.js"></script>
 
    

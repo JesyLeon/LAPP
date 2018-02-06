@@ -19,11 +19,11 @@
     <div class="logocoficab">
         <a href="#"><img src="../img/coficab.png" alt="20px"></a>
         <ul class="nav nav-pills">
-                <li><a href="home.html">Home</a></li>
-                <li class="active"><a href="warehousestatus.html">Warehouse Status</a></li>
-                <li><a href="rackinformation.html">Information for Rack</a></li>
-                <li ><a href="crud.html">Crud</a></li>
-                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li class="active"><a href="warehousestatus.php">Warehouse Status</a></li>
+                <li><a href="rackinformation.php">Information for Rack</a></li>
+                <li ><a href="crud.php">Crud</a></li>
+                <li><a href="transactions.php">Transactions</a></li>
             </ul>
             <br>
     </div>

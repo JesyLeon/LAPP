@@ -24,7 +24,7 @@ body {
 }
 
 .bar-horizon{
-	background: #000321 ;
+	background: #0E2245;
 	width: 100%;
 	max-width: 100%;
 	height: 10%;
@@ -32,7 +32,7 @@ body {
 }
 
 .logocoficab{
-	background:  #000321 ;
+	background:  #0E2245;
 	width: 20%;
 	padding: .5%;
 }
@@ -47,7 +47,7 @@ body {
 	position: relative;
 }
  .nav-pills{ 
-	background: #000321 ;
+	background: #0E2245;
 	Margin: -40px;
 	margin-left: 280px;
 	width: 250%;
@@ -67,4 +67,13 @@ h2{
 
 #input-group{
     width: 60%;
+}
+.input{
+	width: 60%;
+	
+}
+.button {
+color:#000321;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
 }

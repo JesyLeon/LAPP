@@ -12,12 +12,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
     <!--Grafics-->
     <script src="../js/grafics.js"></script>
-=======
-    
->>>>>>> e023d94134845e7adef5ee9c54e4a9ef9bf0058d
     <title>Home</title>
 </head>
 <body>

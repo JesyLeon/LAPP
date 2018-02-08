@@ -20,6 +20,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--Table-->
+    <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script>
+  		$(document).ready(function() {
+  			$('#myTable').DataTable({
+  				"order":[[0, "asc"]],
+  				"language":{
+  				  "lengthMenu": "Show _MENU_ records per page",
+  			  	"info": "Showing page _PAGE_ of _PAGES_",
+  				  "infoEmpty": "There are no records available",
+  				  "infoFiltered": "(Filtered from _MAX_ records)",
+  				  "loadingRecords": "Loading...",
+  				  "processing": "Processing...",
+  				  "search": "Search",
+  				  "zeroRecords": "No matching records were found",
+  				  "paginate":{
+  					  "next": "Next",
+  					  "previous": "Previous"
+  					},
+  				}
+  			});
+  		});
+  	</script>
     <title>Information for Rack</title>
 </head>
 <body>
@@ -41,13 +66,9 @@
     <h2>Information for Rack</h2>
   
 
-    <h3>Information for Rack</h3>   
-    <div class="input-group">
-        <span class="input-group-addon">Brouse</span>
-        <input id="filtrar" type="text" class="form-control" placeholder="Enter the search information...">
-    </div>
-    <br>    
-    <table class="table table-striped table-bordered">
+    <h3>Information for Rack</h3><br>
+        
+    <table class="table table-striped table-bordered" id="myTable" >
       <thead>
         <tr>
           <th>Location</th>

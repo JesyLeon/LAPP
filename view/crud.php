@@ -1,17 +1,7 @@
 <?php
 	include("../model/connection.php");
 
-	$where = "";
-
-	if(!empty($_POST)){
-		$valor = $_POST['campo'];
-		if(!empty($valor)){
-			$where = "WHERE id_crud LIKE '%$valor%', location LIKE '%$valor%', capacity LIKE '%$valor%'";
-			
-		}
-	}
-
-	$tabla="SELECT id_crud, location, capacity FROM crud ";
+	$tabla="SELECT location, capacity FROM crud ";
 	$resultado = $conexion->query($tabla);
 
 ?>
@@ -54,35 +44,27 @@
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
-          <th>ID</th>
           <th>Location</th>
           <th>Capacity</th>
-         
         </tr>
       </thead>
-      <tbody>
+    <tbody>
         <?php
           while($row= $resultado->fetch_assoc()){
-					?>
-					<tr>
-                        <!--Save data on the table-->
-                        <td class="id_crud"><?php echo $row['id_crud']; ?></td>
-						<td class="location"><?php echo $row['location']; ?></td>
-						<td class="capacity"><?php echo $row['capacity']; ?></td>
-						
-					</tr>
-                    <?php
-                }
-            ?>
-            
+		?>
+			<tr>
+				<td><?php echo $row['location']; ?></td>
+				<td><?php echo $row['capacity']; ?></td>
+			</tr>
+        <?php
+        }
+        ?>
       </tbody>
-      
     </table>
     <button type="button" class="button">New</button> <input type="submit" class="button" value="Save">
     <script type="text/javascript" src="../js/taba.js"></script>
 
    
-    
   
     
 </div>

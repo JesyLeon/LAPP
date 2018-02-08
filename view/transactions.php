@@ -1,18 +1,18 @@
 <?php
 	include("../model/connection.php");
 
-	$where = "";
+	$brouse = "";
 
 	if(!empty($_POST)){
-		$valor = $_POST['campo'];
-		if(!empty($valor)){
-			$where = "WHERE shift LIKE '%$valor%', num_trans LIKE '%$valor%', date_trans LIKE '%$valor%'";
+		$value = $_POST['filter'];
+		if(!empty($value)){
+			$brouse = "WHERE shift LIKE '%$value%', num_trans LIKE '%$value%', date_trans LIKE '%$value%'";
 			
 		}
 	}
 
-	$tabla="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
-	$resultado = $conexion->query($tabla);
+	$table="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
+	$result = $conexion->query($table);
 
 ?>
 <!DOCTYPE html>
@@ -30,9 +30,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!--Table-->
+  <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../js/jquery.dataTables.min.js"></script>
+  <script>
+  		$(document).ready(function() {
+  			$('#myTable').DataTable({
+  				"order":[[0, "asc"]],
+  				"language":{
+  				  "lengthMenu": "Show _MENU_ records per page",
+  			  	"info": "Showing page _PAGE_ of _PAGES_",
+  				  "infoEmpty": "There are no records available",
+  				  "infoFiltered": "(Filtered from _MAX_ records)",
+  				  "loadingRecords": "Loading...",
+  				  "processing": "Processing...",
+  				  "search": "Search",
+  				  "zeroRecords": "No matching records were found",
+  				  "paginate":{
+  					  "next": "Next",
+  					  "previous": "Previous"
+  					},
+  				}
+  			});
+  		});
+  	</script>
 </head>
 <body>
 
@@ -54,15 +75,10 @@
 
 <div class="container">
     <h2>Transactions</h2>
-    
 
-    <h3>Transactions to Warehouse</h3>  
-    <div class="input-group">
-        <span class="input-group-addon">Brouse</span>
-        <input id="filtrar" type="text" class="form-control" placeholder="Enter the search information...">
-    </div>
-    <br>
-    <table class="table table-striped table-bordered">
+    <h3>Transactions to Warehouse</h3><br>  
+    
+    <table class="table table-striped table-bordered" id="myTable" >
       <thead>
         <tr>
           <th>Shift</th>
@@ -72,7 +88,7 @@
       </thead>
       <tbody>
         <?php
-          while($row= $resultado->fetch_assoc()){
+          while($row= $result->fetch_assoc()){
 					?>
 					<tr>
 						<!--<td><php echo $row['id_salida']; ?></td>-->
@@ -80,12 +96,12 @@
 						<td><?php echo $row['num_trans']; ?></td>
 						<td><?php echo $row['date_trans']; ?></td>
 					</tr>
-                    <?php
-                }
-            ?>
+          <?php
+          }
+          ?>
       </tbody>
     </table>
-</div>
 
+</div>
 </body>
 </html>  

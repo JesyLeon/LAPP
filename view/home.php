@@ -19,7 +19,7 @@
 <body>
 <nav class="bar-horizon">
     <div class="logocoficab">
-        <a href="#"><img src="../img/logo1.png" alt="20px"></a>
+        <a href="#"><img src="../img/coficab.png" alt="20px"></a>
       
             <ul class="nav nav-pills">
                 <li class="active"><a href="home.php">Home</a></li>

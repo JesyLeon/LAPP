@@ -38,9 +38,7 @@
     
 <div class="container">
     <h2>Crud</h2>
-    
-
-    <h3>Crud</h3>    
+    <form action="insert.php" method ="post">  
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -53,21 +51,26 @@
           while($row= $resultado->fetch_assoc()){
 		?>
 			<tr>
-				<td><?php echo $row['location']; ?></td>
-				<td><?php echo $row['capacity']; ?></td>
+				<td class="location"><?php echo $row['location']; ?></td>
+				<td class="capacity"><?php echo $row['capacity']; ?></td>
 			</tr>
         <?php
         }
         ?>
       </tbody>
     </table>
-    <button type="button" class="button">New</button> <input type="submit" class="button" value="Save">
-    <script type="text/javascript" src="../js/taba.js"></script>
 
+    <button type="button" class="button" >New</button> 
+    
+    <input type="submit"  value="Save">
+    
+    <script type="text/javascript" src="../js/taba.js"></script>
+ 
    
   
     
 </div>
     
 </body>
+</form>
 </html>

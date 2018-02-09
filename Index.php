@@ -1,6 +1,6 @@
 <?Php
 
-$url= $_Get['url'];
+$url = $_Get['url'];
 require 'controller/'.$url.'php';
 
 ?>

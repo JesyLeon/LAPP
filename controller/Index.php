@@ -1,4 +1,10 @@
 <?php
-  echo "hello";
-  exit();
+
+class Index {
+
+  function __construct()
+  {echo "hello";}
+}
+  
+  
 ?>

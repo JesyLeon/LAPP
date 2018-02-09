@@ -1,4 +1,4 @@
 <?php
-  header( 'http://localhost/LAPP/view/' );
+  header( '//localhost/LAPP/view/' );
   exit();
 ?>

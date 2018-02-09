@@ -40,7 +40,6 @@
     <h2>Home</h2>
     <canvas id="myCanvas"></canvas>
     <script type="text/javascript" src="../js/script.js"></script>
-
     </div>
     
 

@@ -90,20 +90,97 @@ input{
 	font-size: 14px;
 	font-weight: bold;
 }
-.inn{
-	Margin: -60px;
-	margin-left: 980px;
-	color: #ffffff;
 
+#rA{
+	width:100px; 
+	height:250px;
+	background: #196f3d;
+	border: solid 1px #000;
 }
-.login{
-	Margin: -80px;
-	margin-left: 780px;
-	color: #000321;
+.iB{
+	margin: -280px;
+	margin-left: 120px;
 }
-.entrar{
-	
-	margin-left: 980px;
+#rB{
+	width:100px; 
+	height:250px;
+	margin-left: 15px;
+	background:  #c0392b;
+	border: solid 1px #000;
 }
+.iC{
+	margin: -280px;
+	margin-left: 255px;
+}
+#rC{
+	width:100px; 
+	height:250px;
+	margin-left: 15px;
+	background: #1f618d;
+	border: solid 1px #000;
+}
+.iD{
+	margin: -280px;
+	margin-left: 390px;
+}
+#rD{
+	width:100px; 
+	height:250px;
+	margin-left: 15px;
+	background: #196f3d;
+	border: solid 1px #000;
+}
+.iE{
+	margin: -280px;
+	margin-left: 525px;
+}
+#rE{
+	width:100px; 
+	height:250px;
+	margin-left: 15px;
+	background: #c0392b;
+	border: solid 1px #000;
+}
+.iF{
+	margin: -280px;
+	margin-left: 660px;
+}
+#rF{
+	width:100px; 
+	height:250px;
+	margin-left: 15px;
+	background: #1f618d;
+	border: solid 1px #000;
+}
+
+.iG{
+	margin: -280px;
+	margin-left: 795px;
+}
+#rG{
+	width:100px; 
+	height:250px;
+	margin-left: 15px;
+	background: #196f3d;
+	border: solid 1px #000;
+}
+#myCanvas{
+margin: 70px;
+margin-left: 800px;
+}
+
+
+
+
+
+.A{margin-left: 45px;}
+.B{	margin-left: 60px;}
+.C{	margin-left: 60px;}
+.D{	margin-left: 60px;}
+.E{	margin-left: 60px;}
+.F{	margin-left: 60px;}
+.G{	margin-left: 60px;}
+
+
 
 

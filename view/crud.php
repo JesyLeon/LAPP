@@ -60,11 +60,11 @@
       </tbody>
     </table>
 
-    <button type="button" class="button" >New</button> 
-    
-    <input type="submit"  value="Save">
-    
+    <button type="button" class="button" >New</button> <input type="submit" class= "button" value="Save">
     <script type="text/javascript" src="../js/taba.js"></script>
+  
+    
+   
  
    
   

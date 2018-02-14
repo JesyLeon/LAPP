@@ -1,10 +1,3 @@
-<?php
-	include("../model/connection.php");
-
-	$tabla="SELECT location, capacity FROM crud ";
-	$resultado = $conexion->query($tabla);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +9,9 @@
     <!--Design General-->
     <link rel="stylesheet" href="../css/design.css">
     <!--Menu-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Crud</title>
 </head>
 <body>
@@ -36,41 +29,89 @@
     </div>
 </nav>
     
-<div class="container">
-    <h2>Crud</h2>
-    <form action="insert.php" method ="post">  
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Location</th>
-          <th>Capacity</th>
-        </tr>
-      </thead>
-    <tbody>
-        <?php
-          while($row= $resultado->fetch_assoc()){
-		?>
-			<tr>
-				<td class="location"><?php echo $row['location']; ?></td>
-				<td class="capacity"><?php echo $row['capacity']; ?></td>
-			</tr>
-        <?php
-        }
-        ?>
-      </tbody>
-    </table>
+<div class="container">   
+<div class="table-responsive">  
+     <h2 >CRUD</h2><br />  
+     <div id="datos"></div>                 
+</div>  
+</div>  
+</body>  
+</html>  
 
-    <button type="button" class="button" >New</button> <input type="submit" class= "button" value="Save">
-    <script type="text/javascript" src="../js/taba.js"></script>
-  
+<script>  
+ $(document).ready(function(){  
+      function fetch_data()  
+      {  
+           $.ajax({  
+                url:"select.php",  
+                method:"POST",  
+                success:function(data){  
+                     $('#datos').html(data);  
+                }  
+           });  
+      }  
+      fetch_data();  
+      $(document).on('click', '#btn_add', function(){  
+           var location = $('#location').text();  
+           var capacity = $('#capacity').text();  
+           if(location == '')  
+           {  
+                alert("Enter a location");  
+                return false;  
+           }  
+           if(capacity == '')  
+           {  
+                alert("Enter a capacity");  
+                return false;  
+           }  
+           $.ajax({  
+                url:"insert.php",  
+                method:"POST",  
+                data:{location:location, capacity:capacity},  
+                dataType:"text",  
+                success:function(data)  
+                {  
+                     alert(data);  
+                     fetch_data();  
+                }  
+           })  
+      });  
+      function edit_data(location, capacity)  
+      {  
+           $.ajax({  
+                url:"edit.php",  
+                method:"POST",  
+                data:{location:location, capacity:capacity},  
+                dataType:"text",  
+                success:function(data){  
+                     alert(data);  
+                }  
+           });  
+      }  
+      
+      $(document).on('blur', '.capacity', function(){  
+           var location = $(this).data("id2");  
+           var capacity = $(this).text();  
+           edit_data(location,capacity, "capacity");  
+      }); 
+
+      $(document).on('click', '.btn_delete', function(){  
+           var id=$(this).data("id3");  
+           if(confirm("Are you sure you want to delete this?"))  
+           {  
+                $.ajax({  
+                     url:"delete.php",  
+                     method:"POST",  
+                     data:{location:location},
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          fetch_data();  
+                     }  
+                });  
+           }  
+      }); 
     
-   
- 
-   
-  
-    
-</div>
-    
-</body>
-</form>
-</html>
+     
+ });  
+ </script>

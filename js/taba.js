@@ -1,4 +1,4 @@
-$('button').click(function() {
+$('button').click(function insertar() {
  
     //add new row
     var fila=     

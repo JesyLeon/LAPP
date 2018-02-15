@@ -1,11 +1,10 @@
-<?php
-	include("../model/connection.php");
-	include("../controller/security.php");
-	//echo $nom_user;
-	//echo "<br>";
-	if($id_type_user != 1){
-		header("location: ../../login.php");
-		exit();
+<?phinclude("../../model/connection.php");
+    include("../../controller/security.php");
+    
+    if($id_type_user != 1){
+        header("location: ../../login.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>

@@ -1,13 +1,13 @@
 <?php
 
-	include("../model/connection.php");
-	include("../controller/security.php");
-	//echo $nom_user;
-	//echo "<br>";
-	if($id_type_user != 1){
-		header("location: ../../login.php");
-		exit();
+include("../../model/connection.php");
+include("../../controller/security.php");
 
+if($id_type_user != 1){
+    header("location: ../../login.php");
+    exit();
+}
+	
 	$brouse = "";
 
 	if(!empty($_POST)){
@@ -19,9 +19,14 @@
 	}
 
 	$table="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
-	$result = $con->query($table);
+  $result = $conexion->query($table);
+  
+  header("Refresh: 15; URL='transactions.php'");
 
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,21 +34,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--Icon Coficab-->
-	<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
   <!--Disaing General-->
-  <link rel="stylesheet" href="../css/design.css">
+  <link rel="stylesheet" href="../../css/design.css">
   <!--Menu-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!--Table-->
-  <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="../../css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="../js/jquery.dataTables.min.js"></script>
+  <script src="../../js/jquery.dataTables.min.js"></script>
   <script>
   		$(document).ready(function() {
   			$('#myTable').DataTable({
-  				"order":[[0, "asc"]],
+  				"order":[[2, "desc"]],
   				"language":{
   				  "lengthMenu": "Show _MENU_ records per page",
   			  	"info": "Showing page _PAGE_ of _PAGES_",
@@ -66,7 +71,7 @@
 
 <nav class="bar-horizon">
     <div class="logocoficab">
-        <a href="#"><img src="../img/coficab.png" alt="20px"></a>
+        <a href="#"><img src="../../img/coficab.png" alt="20px"></a>
         
         <ul class="nav nav-pills">
             <li><a href="home.php">Home</a></li>

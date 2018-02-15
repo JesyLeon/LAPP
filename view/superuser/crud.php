@@ -1,13 +1,17 @@
-<<<<<<< HEAD:view/superuser/crud.php
 <?php
 	include("../../model/connection.php");
+    include("../../controller/security.php");
+    
+    if($id_type_user != 1){
+        header("location: ../../login.php");
+        exit();
+    }
 
 	$tabla="SELECT location, capacity FROM crud ";
 	$resultado = $conexion->query($tabla);
 
 ?>
-=======
->>>>>>> c91bbd2dcff2bbd9e247dd8b170eb4b95b281d17:view/crud.php
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +19,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Icon Coficab-->
-	<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <!--Design General-->
-    <link rel="stylesheet" href="../css/design.css">
+    <link rel="stylesheet" href="../../css/design.css">
     <!--Menu-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -27,7 +31,7 @@
 <body>
 <nav class="bar-horizon">
     <div class="logocoficab">
-        <a href="#"><img src="../img/coficab.png" alt="20px"></a>
+        <a href="#"><img src="../../img/coficab.png" alt="20px"></a>
         <ul class="nav nav-pills">
                 <li><a href="home.php">Home</a></li>
                 <li><a href="warehousestatus.php">Warehouse Status</a></li>
@@ -48,4 +52,4 @@
 </body>  
 </html>  
 
-<script type="text/javascript" src="../js/crudac.js"></script>
+<script type="text/javascript" src="../../js/crudac.js"></script>

@@ -22,8 +22,8 @@ if(1 == mysqli_num_rows($resultado)){
     $_SESSION["name_user"] = $nom_user;
     $_SESSION["id_type_user"] = $id_type_user;
 
-    /*echo $_SESSION["nom_user"];
-    echo $_SESSION["id_tipo_user"];*/		
+    /*echo $_SESSION["name_user"];
+    echo $_SESSION["id_type_user"];	*/	
 
     /*echo "$nom_user";
     echo "$id_tipo_user";*/

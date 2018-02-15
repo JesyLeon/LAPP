@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 	<title>Inicio de Sesión</title>
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="css/iniciosesion.css">
+	<link rel="stylesheet" href="">
 </head>
 <body>
 	<form action="controller/validation.php" method="POST">

@@ -2,7 +2,7 @@ $(document).ready(function(){
     function fetch_data()  
     {  
          $.ajax({  
-              url:"../model/select.php",  
+              url:"../../model/select.php",  
               method:"POST",  
               success:function(data){  
                    $('#datos').html(data);  
@@ -24,7 +24,7 @@ $(document).ready(function(){
               return false;  
          }  
          $.ajax({  
-              url:"../model/insert.php",  
+              url:"../../model/insert.php",  
               method:"POST",  
               data:{location:location, capacity:capacity},  
               dataType:"text",  
@@ -38,7 +38,7 @@ $(document).ready(function(){
     function edit_data(location, capacity)  
     {  
          $.ajax({  
-              url:"../model/edit.php",  
+              url:"../../model/edit.php",  
               method:"POST",  
               data:{location:location, capacity:capacity},  
               dataType:"text",  
@@ -60,7 +60,7 @@ $(document).ready(function(){
          if(confirm("Are you sure you want to delete this?"))  
          {  
               $.ajax({  
-                   url:"../model/delete.php",  
+                   url:"../../model/delete.php",  
                    method:"POST",  
                    data:{location:location},
                    dataType:"text",  

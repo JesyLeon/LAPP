@@ -15,6 +15,10 @@
 	$result = $con->query($table);
 
 ?>
+<?php 
+header("Refresh: 15; URL='transactions.php'");//This line its for update the page every time, only for an example its every 15 seconds
+//Refresh indicates how long you want the page to refresh, URL indcates the page to redirect
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,7 +105,14 @@
           ?>
       </tbody>
     </table>
-
+    <br>
+    <!--Button for print the excel report-->
+    <button type="button" class="btn btn-success">Print</button>
+    <script> 
+    $(document).on('click', '.btn', function(){
+   alert("Excel file");//test
+    });
+   </script>
 </div>
 </body>
 </html>  

@@ -64,11 +64,10 @@ body {
 
 h2{
     text-align: center;
-    color: black;
-
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
 }
-
-
 
 #input-group{
     width: 60%;
@@ -77,20 +76,8 @@ h2{
 	width: 60%;
 	
 }
-.button {
-color:#000321;
-font-family: Arial, Helvetica, sans-serif;
-font-weight: bold;
-font-size: 14px;
-border-radius: 6px;
 
-}
-.button:hover{
-color: #1883ba;
-background-color: #ffffff;
-}
-
-input{
+#fecha{
 	font-size: 14px;
 	font-weight: bold;
 }

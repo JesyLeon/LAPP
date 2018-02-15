@@ -92,7 +92,12 @@
       </tbody>
     </table>
 
-    Last Update: <input type="text">
+    Last Update: <input type="date" id="fecha" name="fecha" class="form-control" value="<?php   $time = time();
+
+echo date("d-m-Y (H:i:s)", $time); ?>" required/>
+    
+
+
 </div>
     
 </body>

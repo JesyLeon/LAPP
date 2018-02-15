@@ -21,7 +21,7 @@ if($id_type_user != 1){
 	$table="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
   $result = $conexion->query($table);
   
-  header("Refresh: 15; URL='transactions.php'");
+  header("Refresh: 30; URL='transactions.php'");
 
 ?>
 

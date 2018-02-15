@@ -13,7 +13,7 @@
 
 ?>
 <?php 
-header("Refresh: 15; URL='rackinformation.php'");
+header("Refresh: 60; URL='rackinformation.php'");
 ?>
 <!DOCTYPE html>
 <html lang="en">

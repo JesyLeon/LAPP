@@ -1,8 +1,19 @@
 <?php
 	include("../model/connection.php");
+	include("../controller/security.php");
+	//echo $nom_user;
+	//echo "<br>";
+	if($id_type_user != 1){
+		header("location: ../home.php");
+		exit();
+	}else if($id_type_user != 2){
+		header("location: ../home.php");
+		exit();
+    }
 
-	$tabla="SELECT id_racks, location, ocupation, capacity FROM racks ";
-	$resultado = $conexion->query($tabla);
+
+	$table="SELECT id_racks, location, ocupation, capacity FROM racks ";
+	$result = $conexion->query($table);
 
 ?>
 
@@ -57,6 +68,7 @@
                 <li class="active"><a href="rackinformation.php">Information for Rack</a></li>
                 <li><a href="crud.php">Crud</a></li>
                 <li><a href="transactions.php">Transactions</a></li>
+                <li><a href="../loginout.php">login Out</a></li>
             </ul>
             <br>
     </div>
@@ -78,7 +90,7 @@
       </thead>
       <tbody>
       <?php
-      while($row= $resultado->fetch_assoc()){
+      while($row= $result->fetch_array()){
                 ?>
                 <tr>
                     <!--<td><php echo $row['id_salida']; ?></td>-->

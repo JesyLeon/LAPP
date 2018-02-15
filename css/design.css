@@ -31,6 +31,10 @@ body {
 	max-height: 100%;
 }
 
+.login {
+	float: right;
+}
+
 .logocoficab{
 	background:  #0E2245;
 	width: 20%;

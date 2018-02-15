@@ -12,7 +12,7 @@
 	}
 
 	$table="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
-	$result = $conexion->query($table);
+	$result = $con->query($table);
 
 ?>
 <!DOCTYPE html>

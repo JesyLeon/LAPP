@@ -92,9 +92,10 @@
       </tbody>
     </table>
 
-    Last Update: <input type="date" id="fecha" name="fecha" class="form-control" value="<?php   $time = time();
-
-echo date("d-m-Y (H:i:s)", $time); ?>" required/>
+    <?php
+$fecha_time = date("d/m/Y, H:i:s");  
+?>
+    Last Update: <input type="text" value="<?php echo $fecha_time; ?>">
     
 
 

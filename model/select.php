@@ -5,13 +5,15 @@
  $result = mysqli_query($connect, $sql);  
  $output .= '  
       <div class="table-responsive">  
-           <table class="table table-bordered">  
+           <table class="table table-striped table-bordered" id="myTable"> 
+           <thead> 
                 <tr>  
                      
                      <th width="20%">Location</th>  
                      <th width="20%">Capacity</th>  
                      <th width="5%">Action</th>  
-                </tr>';  
+                </tr>
+                </thead>';  
  if(mysqli_num_rows($result) > 0)  
  {  
       while($row = mysqli_fetch_array($result))  

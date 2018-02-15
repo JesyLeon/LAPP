@@ -46,7 +46,8 @@
 <div class="container">   
 <div class="table-responsive">  
      <h2 >CRUD</h2><br />  
-     <div id="datos"></div>                 
+     <div id="datos">
+     </div>                 
 </div>  
 </div>  
 </body>  

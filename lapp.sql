@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 15-02-2018 a las 21:58:01
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 7.1.1
+-- Host: 127.0.0.1
+-- Generation Time: Feb 15, 2018 at 11:15 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,37 +19,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `lapp`
+-- Database: `lapp`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `crud`
+-- Table structure for table `crud`
 --
 
 CREATE TABLE `crud` (
-  `id_crud` int(11) NOT NULL,
   `location` varchar(6) NOT NULL,
   `capacity` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `crud`
+-- Dumping data for table `crud`
 --
 
-INSERT INTO `crud` (`id_crud`, `location`, `capacity`) VALUES
-(1, '1', 0),
-(2, '1', 0),
-(3, '3', 0),
-(4, '1', 0),
-(5, '1', 0),
-(6, '3', 0);
+INSERT INTO `crud` (`location`, `capacity`) VALUES
+('01AA22', 5);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `home`
+-- Table structure for table `home`
 --
 
 CREATE TABLE `home` (
@@ -59,29 +55,29 @@ CREATE TABLE `home` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `racks`
+-- Table structure for table `racks`
 --
 
 CREATE TABLE `racks` (
   `id_racks` int(11) NOT NULL,
   `location` varchar(250) NOT NULL,
-  `ocupation` int(11) NOT NULL,
-  `capacity` int(11) NOT NULL
+  `spools` int(11) NOT NULL,
+  `status` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `racks`
+-- Dumping data for table `racks`
 --
 
-INSERT INTO `racks` (`id_racks`, `location`, `ocupation`, `capacity`) VALUES
-(1, '01AA11', 50, 12),
-(2, '01AA12', 15, 19),
-(3, '01AA13', 12, 12);
+INSERT INTO `racks` (`id_racks`, `location`, `spools`, `status`) VALUES
+(1, '01AA12', 6, 'FULL'),
+(2, '01AB21', 4, 'EMPTY'),
+(3, '01AC23', 7, 'OVER');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `transactions`
+-- Table structure for table `transactions`
 --
 
 CREATE TABLE `transactions` (
@@ -92,7 +88,7 @@ CREATE TABLE `transactions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `transactions`
+-- Dumping data for table `transactions`
 --
 
 INSERT INTO `transactions` (`id_trans`, `shift`, `num_trans`, `date_trans`) VALUES
@@ -104,7 +100,7 @@ INSERT INTO `transactions` (`id_trans`, `shift`, `num_trans`, `date_trans`) VALU
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `type_user`
+-- Table structure for table `type_user`
 --
 
 CREATE TABLE `type_user` (
@@ -113,7 +109,7 @@ CREATE TABLE `type_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `type_user`
+-- Dumping data for table `type_user`
 --
 
 INSERT INTO `type_user` (`id_type_user`, `type_user`) VALUES
@@ -123,7 +119,7 @@ INSERT INTO `type_user` (`id_type_user`, `type_user`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -135,7 +131,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_user`, `name_user`, `user`, `pass`, `id_type_user`) VALUES
@@ -143,85 +139,79 @@ INSERT INTO `users` (`id_user`, `name_user`, `user`, `pass`, `id_type_user`) VAL
 (2, 'Adnen Mattossi', 'user', '827ccb0eea8a706c4c34a16891f84e7b', 2);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `crud`
---
-ALTER TABLE `crud`
-  ADD PRIMARY KEY (`id_crud`);
-
---
--- Indices de la tabla `home`
+-- Indexes for table `home`
 --
 ALTER TABLE `home`
   ADD PRIMARY KEY (`time`),
   ADD UNIQUE KEY `hu` (`hu`);
 
 --
--- Indices de la tabla `racks`
+-- Indexes for table `racks`
 --
 ALTER TABLE `racks`
   ADD PRIMARY KEY (`id_racks`);
 
 --
--- Indices de la tabla `transactions`
+-- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id_trans`);
 
 --
--- Indices de la tabla `type_user`
+-- Indexes for table `type_user`
 --
 ALTER TABLE `type_user`
   ADD PRIMARY KEY (`id_type_user`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `id_type_user` (`id_type_user`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `crud`
---
-ALTER TABLE `crud`
-  MODIFY `id_crud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT de la tabla `racks`
+-- AUTO_INCREMENT for table `racks`
 --
 ALTER TABLE `racks`
   MODIFY `id_racks` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT de la tabla `transactions`
+-- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
   MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT de la tabla `type_user`
+-- AUTO_INCREMENT for table `type_user`
 --
 ALTER TABLE `type_user`
   MODIFY `id_type_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_type_user`) REFERENCES `type_user` (`id_type_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

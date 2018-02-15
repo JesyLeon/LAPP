@@ -43,7 +43,7 @@
       function fetch_data()  
       {  
            $.ajax({  
-                url:"select.php",  
+                url:"../model/select.php",  
                 method:"POST",  
                 success:function(data){  
                      $('#datos').html(data);  
@@ -65,7 +65,7 @@
                 return false;  
            }  
            $.ajax({  
-                url:"insert.php",  
+                url:"../model/insert.php",  
                 method:"POST",  
                 data:{location:location, capacity:capacity},  
                 dataType:"text",  
@@ -79,7 +79,7 @@
       function edit_data(location, capacity)  
       {  
            $.ajax({  
-                url:"edit.php",  
+                url:"../model/edit.php",  
                 method:"POST",  
                 data:{location:location, capacity:capacity},  
                 dataType:"text",  
@@ -96,11 +96,11 @@
       }); 
 
       $(document).on('click', '.btn_delete', function(){  
-           var id=$(this).data("id3");  
+           var location=$(this).data("id3");  
            if(confirm("Are you sure you want to delete this?"))  
            {  
                 $.ajax({  
-                     url:"delete.php",  
+                     url:"../model/delete.php",  
                      method:"POST",  
                      data:{location:location},
                      dataType:"text",  

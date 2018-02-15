@@ -5,7 +5,9 @@
 	$resultado = $conexion->query($tabla);
 
 ?>
-
+<?php 
+header("Refresh: 15; URL='rackinformation.php'");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,9 +97,15 @@
     <?php
 $fecha_time = date("d/m/Y, H:i:s");  
 ?>
-    Last Update: <input type="text" value="<?php echo $fecha_time; ?>">
-    
+    Last Update: <input type="text" id="fecha" value="<?php echo $fecha_time; ?>"><br/>
+       <!--Button for print the excel report-->
+    <button type="button" class="btn btn-success">Print</button>
 
+   <script> 
+    $(document).on('click', '.btn', function(){
+   alert("Excel file");//prueba
+    });
+   </script>
 
 </div>
     

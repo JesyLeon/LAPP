@@ -47,6 +47,7 @@ $(document).ready(function(){
               }  
          });  
     }  
+  
     
     $(document).on('blur', '.capacity', function(){  
          var location = $(this).data("id2");  

@@ -105,6 +105,7 @@ header("Refresh: 15; URL='transactions.php'");//This line its for update the pag
           ?>
       </tbody>
     </table>
+    <br>
     <!--Button for print the excel report-->
     <button type="button" class="btn btn-success">Print</button>
     <script> 

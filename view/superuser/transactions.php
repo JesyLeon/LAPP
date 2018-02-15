@@ -114,6 +114,15 @@ if($id_type_user != 1){
       </tbody>
     </table>
 
+       <!--Button for print the excel report-->
+    <button type="button" class="btn btn-success">Print</button>
+
+   <script> 
+    $(document).on('click', '.btn', function(){
+   alert("Excel file");//prueba
+    });
+   </script>
+
 </div>
 </body>
 </html>  

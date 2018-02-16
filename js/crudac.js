@@ -47,10 +47,10 @@ $(document).ready(function(){
               }  
          });  
     }
-    $(document).on('blur', '.location', function(){  
-        var loca = $(this).data("id1");  
+    $(document).on('.location', function(){  
+        var location = $(this).data("id1");  
         var location = $(this).text();  
-        edit_data(location, "location");  
+        edit_data(location,location, "location");  
    });   
   
     

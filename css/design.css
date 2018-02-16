@@ -77,6 +77,34 @@ h2{
 	
 }
 
+.botones{
+	margin: auto;
+	/*background: #3348eb;*/
+	margin: 20px 0;
+	height: 35px;
+}
+
+div#izquierda{
+	width: 165px;
+	height: 35px;
+	/*background-color: red;*/
+	float: right;
+}
+
+div#centrado{
+    width: 200px;
+	height: 35px;
+	/*background-color: blue;*/	
+	float: right;
+}
+
+div#derecha{
+    width: 185px;
+	height: 35px;
+	/*background-color: green;*/
+	float: right;
+}
+
 #fecha{
 	font-size: 14px;
 	font-weight: bold;

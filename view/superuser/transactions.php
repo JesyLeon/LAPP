@@ -113,7 +113,7 @@ if($id_type_user != 1){
           ?>
       </tbody>
     </table>
-
+    <br>
        <!--Button for print the excel report-->
     <button type="button" class="btn btn-success">Print</button>
 

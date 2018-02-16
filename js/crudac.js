@@ -46,7 +46,12 @@ $(document).ready(function(){
                    alert(data);  
               }  
          });  
-    }  
+    }
+    $(document).on('blur', '.location', function(){  
+        var loca = $(this).data("id1");  
+        var location = $(this).text();  
+        edit_data(location, "location");  
+   });   
   
     
     $(document).on('blur', '.capacity', function(){  

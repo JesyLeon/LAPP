@@ -94,7 +94,24 @@ header("Refresh: 60; URL='rackinformation.php'");
                     <!--<td><php echo $row['id_salida']; ?></td>-->
                     <td><?php echo $row['location']; ?></td>
                     <td><?php echo $row['spools']; ?></td>
-                    <td><?php echo $row['status']; ?></td>
+                    <?php 
+
+switch($row['status']){
+  case 'EMPTY':
+    echo "<td bgcolor='#ebe407'>$row[status]</td>";
+    break;
+  case 'FULL':
+    echo "<td bgcolor='#19d306'>$row[status]</td>";
+    break;
+    case 'OVER':
+    echo "<td bgcolor='#eb3713'>$row[status]</td>";
+    break;
+  default:
+    echo "<td>$row[status]</td>";
+    break;
+}
+?>
+                   <!-- <td><?php echo $row['status']; ?></td>-->
                 </tr>
                 <?php
             }

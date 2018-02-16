@@ -81,7 +81,20 @@ h2{
 	font-size: 14px;
 	font-weight: bold;
 }
+td{
+	font-weight: bold;
+	
+}
+th{
+	font-size: 17px;
+	background:  #d0d3d4;
+}
 
+
+
+
+
+/*WHS STATUS*/
 #rA{
 	width:100px; 
 	height:250px;
@@ -159,10 +172,6 @@ h2{
 margin: 70px;
 margin-left: 800px;
 }
-
-
-
-
 
 .A{margin-left: 45px;}
 .B{	margin-left: 60px;}

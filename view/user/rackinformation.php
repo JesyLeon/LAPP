@@ -7,7 +7,7 @@
         exit();
     }
 
-	$table="SELECT id_racks, location, ocupation, capacity FROM racks ";
+	$table="SELECT id_racks, location, spools, status FROM racks ";
     $result = $conexion->query($table);
     
     header("Refresh: 60; URL='rackinformation.php'");
@@ -81,8 +81,8 @@
       <thead>
         <tr>
           <th>Location</th>
-          <th>Ocupation</th>
-          <th>Capacity</th>
+          <th>No. spools</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -92,16 +92,36 @@
                 <tr>
                     <!--<td><php echo $row['id_salida']; ?></td>-->
                     <td><?php echo $row['location']; ?></td>
-                    <td><?php echo $row['ocupation']; ?></td>
-                    <td><?php echo $row['capacity']; ?></td>
+                    <td><?php echo $row['spools']; ?></td>
+                    <?php 
+
+            switch($row['status']){
+                case 'EMPTY':
+                  echo "<td bgcolor='#ebe407'>$row[status]</td>";
+                break;
+                 case 'FULL':
+                  echo "<td bgcolor='#19d306'>$row[status]</td>";
+                 break;
+                  case 'OVER':
+                  echo "<td bgcolor='#eb3713'>$row[status]</td>";
+                 break;
+                  default:
+                 echo "<td>$row[status]</td>";
+                 break;
+                }
+                ?>
+                    <!--<td><?php echo $row['capacity']; ?></td>-->
                 </tr>
                 <?php
             }
         ?>
       </tbody>
     </table>
-
-    Last Update: <input type="text">
+    <?php
+    $fecha_time = date("d/m/Y, H:i:s");  
+    ?>
+        Last Update: <input type="text" id="fecha" value="<?php echo $fecha_time; ?>">
+        <br>
 </div>
     
 </body>

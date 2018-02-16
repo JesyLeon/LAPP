@@ -11,9 +11,7 @@
 	$table="SELECT id_racks, location, spools, status FROM racks ";
 	$result = $conexion->query($table);
 
-?>
-<?php 
-header("Refresh: 60; URL='rackinformation.php'");
+    header("Refresh: 60; URL='rackinformation.php'");
 ?>
 <!DOCTYPE html>
 <html lang="en">

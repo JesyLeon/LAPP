@@ -21,7 +21,7 @@ if($id_type_user != 1){
 	$table="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
   $result = $conexion->query($table);
   
-  header("Refresh: 30; URL='transactions.php'");
+  header("Refresh: 60; URL='transactions.php'");
 
 ?>
 
@@ -85,7 +85,8 @@ if($id_type_user != 1){
             <li><a href="warehousestatus.php">Warehouse Status</a></li>
             <li><a href="rackinformation.php">Information for Rack</a></li>
             <li><a href="crud.php">Crud</a></li>
-            <li class="active"><a href="transactions.php">Transactions</a></li>
+						<li class="active"><a href="transactions.php">Transactions</a></li>
+						<li><a href="../../loginout.php">login Out</a></li>
           </ul>
           <br>
           
@@ -133,6 +134,7 @@ if($id_type_user != 1){
    <div class="botones">
 				<div id="izquierda">
 					<form action="../../../controlador/admin/reportes/concepto_entregas/concepto_entregas_general.php" method="post" id="insert_form" accept-charset="utf-8">
+<<<<<<< HEAD
 						<input type="submit" name="reporte_general" id="insert" value="General report" class="btn btn-success">
 					</form>
 				</div>
@@ -141,6 +143,16 @@ if($id_type_user != 1){
 				</div>
 				<div id="derecha">
 					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Daily report <!--<span class="fa fa-file-excel-o"></span>--></a>
+=======
+						<input type="submit" name="reporte_general" id="insert" value="Report General" class="btn btn-success">
+					</form>
+				</div>
+				<div id="centrado">
+					<a class='btn btn-success' value="report_month" data-toggle="modal" href="#Reporte_Mensual">Report for Month <!--<span class="fa fa-file-excel-o"></span>--></a>
+				</div>
+				<div id="derecha">
+					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Report of day <!--<span class="fa fa-file-excel-o"></span>--></a>
+>>>>>>> 4b0536f3d7f427a58e7b6988a8ceae0f9e72c101
 				</div>							
 			</div><br>
 

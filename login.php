@@ -12,7 +12,7 @@
 		<h3>Login</h3>
 		<input type="text" name="user" pattern="[a-z.]{1,20}" required placeholder="&#128113; User">
 		<input type="password" name="pass" pattern="[a-z0-9]{1,6}" required placeholder="&#128272; Password">
-		<input type="submit" value="Enter">
+		<input type="submit" value="Login">
 	</form>
 </body>
 </html>

@@ -12,7 +12,7 @@
 		$salida = fopen('php://output', 'w');
 
 		//Encabezados
-		fputcsv($salida, array('Shift', 'No. Transactions', 'Date'));
+		fputcsv($salida, array('Shift', 'No. Transactions', 'Date'));//titulos de la tabla
 
 		//Query para crear el reporte
 		$reporte = $conexion->query("SELECT shift, num_trans, date_trans FROM transactions WHERE date_trans = '$fecha' ");

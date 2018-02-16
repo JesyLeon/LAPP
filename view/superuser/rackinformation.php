@@ -23,12 +23,19 @@ header("Refresh: 60; URL='rackinformation.php'");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Icon Coficab-->
 	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-    <!--Disaing General-->
+    <!--Desing General-->
     <link rel="stylesheet" href="../../css/design.css">
     <!--Menu-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!---Modal Window-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--Calendar--> 
+  <script src="../../js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="../../css/bootstrap-datepicker.css"> 
     <!--Table-->
     <link rel="stylesheet" href="../../css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -123,17 +130,43 @@ switch($row['status']){
 $fecha_time = date("d/m/Y, H:i:s");  
 ?>
     Last Update: <input type="text" id="fecha" value="<?php echo $fecha_time; ?>">
-    <br><br/>
-       <!--Button for print the excel report-->
+    <br>
+
+       <!--Button for print the excel report
     <button type="button" class="btn btn-success">Print</button>
 
    <script> 
     $(document).on('click', '.btn', function(){
    alert("Excel file");//prueba
     });
-   </script>
+   </script>-->
+<div class="botones">
+					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Print report <!--<span class="fa fa-file-excel-o"></span>--></a>
+			<div class="modal fade" id="Reporte_Diario">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h2 class="modal-tittle">Report</h2>
+						</div>
+						<div class="modal-body">
+							<form action="../../controller/superuser/reports/racks/report_status.php" method="post" id="insert_form" accept-charset="utf-8">
+								<label>Status</label>
+                                    <select name="status" id="options" class="form-control">
+                                        <option value="EMPTY">EMPTY</option>
+                                        <option value="FULL">FULL</option>
+                                        <option value="OVER">OVER</option>
+                                    </select><br>
+								<input type="submit" name="genera_reporte" id="insert" value="Excel report" class="btn btn-success">
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>		
+			</div>
 
-</div>
-    
+</div> 
 </body>
 </html>

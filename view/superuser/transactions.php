@@ -35,7 +35,7 @@ if($id_type_user != 1){
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--Icon Coficab-->
 	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-  <!--Disaing General-->
+  <!--Desing General-->
   <link rel="stylesheet" href="../../css/design.css">
   <!--Menu-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -133,14 +133,14 @@ if($id_type_user != 1){
    <div class="botones">
 				<div id="izquierda">
 					<form action="../../../controlador/admin/reportes/concepto_entregas/concepto_entregas_general.php" method="post" id="insert_form" accept-charset="utf-8">
-						<input type="submit" name="reporte_general" id="insert" value="Reporte General" class="btn btn-success">
+						<input type="submit" name="reporte_general" id="insert" value="General report" class="btn btn-success">
 					</form>
 				</div>
 				<div id="centrado">
-					<a class='btn btn-success' value="report_month" data-toggle="modal" href="#Reporte_Mensual">Reporte Mensual <!--<span class="fa fa-file-excel-o"></span>--></a>
+					<a class='btn btn-success' value="report_month" data-toggle="modal" href="#Reporte_Mensual">Monthly report <!--<span class="fa fa-file-excel-o"></span>--></a>
 				</div>
 				<div id="derecha">
-					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Reporte  Diario <!--<span class="fa fa-file-excel-o"></span>--></a>
+					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Daily report <!--<span class="fa fa-file-excel-o"></span>--></a>
 				</div>							
 			</div><br>
 
@@ -149,25 +149,25 @@ if($id_type_user != 1){
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h2 class="modal-tittle">Generar Reporte</h2>
+							<h2 class="modal-tittle">Report</h2>
 						</div>
 						<div class="modal-body">
 							<form action="../../controller/superuser/reports/transactions/report_month.php" method="post" id="insert_form" accept-charset="utf-8">
-								<label>Fecha Inicial</label>
+								<label>Start date</label>
 								<div class="input-group date calendario">
   									<input type="text" name="fecha_inicio" id="fecha_inicio" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 								</div>
 								<br>
-								<label>Fecha Termino</label>
+								<label>End date</label>
 								<div class="input-group date calendario">
   									<input type="text" name="fecha_termino" id="fecha_termino" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 								</div>
 								<br>
-								<input type="submit" name="generar_reporte" id="insert" value="Generar Reporte" class="btn btn-success">
+								<input type="submit" name="generar_reporte" id="insert" value="Print report" class="btn btn-success">
 							</form>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>		
@@ -178,20 +178,20 @@ if($id_type_user != 1){
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h2 class="modal-tittle">Generar Reporte</h2>
+							<h2 class="modal-tittle">Report</h2>
 						</div>
 						<div class="modal-body">
 							<form action="../../controller/superuser/reports/transactions/report_day.php" method="post" id="insert_form" accept-charset="utf-8">
-								<label>Fecha</label>
+								<label>Date</label>
 								<div class="input-group date calendario">
   									<input type="text" name="fecha" id="fecha" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 								</div>
 								<br>
-								<input type="submit" name="genera_reporte" id="insert" value="Generar Reporte" class="btn btn-success">
+								<input type="submit" name="genera_reporte" id="insert" value="Print report" class="btn btn-success">
 							</form>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>		

@@ -87,7 +87,7 @@
       <thead>
         <tr>
           <th>Location</th>
-          <th>N° spools</th>
+          <th>No. spools</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -149,7 +149,7 @@ $fecha_time = date("d/m/Y, H:i:s");
 						</div>
 						<div class="modal-body">
 							<form action="../../controller/superuser/reports/racks/report_status.php" method="post" id="insert_form" accept-charset="utf-8">
-								<label>Status</label>
+								<label>Status</label><!--combo-->
                                     <select name="status" id="options" class="form-control">
                                         <option value="EMPTY">EMPTY</option>
                                         <option value="FULL">FULL</option>

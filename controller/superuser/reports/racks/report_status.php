@@ -12,7 +12,7 @@
 		$salida = fopen('php://output', 'w');
 
 		//Encabezados
-		fputcsv($salida, array('Location', 'N° spools', 'Status'));//titulos de la tabla
+		fputcsv($salida, array('Location', 'No. spools', 'Status'));//titulos de la tabla
 
 		//Query para crear el reporte
 		$reporte = $conexion->query("SELECT location, spools, status FROM racks WHERE status = '$status'");

@@ -1,3 +1,13 @@
+<?php
+	include("../../model/connection.php");
+    include("../../controller/security.php");
+    
+    if($id_type_user != 2){
+        header("location: ../../login.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Icon Coficab-->
-	<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <!--Disaing General-->
-    <link rel="stylesheet" href="../css/design.css">
+    <link rel="stylesheet" href="../../css/design.css">
     <!--Menu-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,13 +27,14 @@
 <body>
 <nav class="bar-horizon">
     <div class="logocoficab">
-        <a href="#"><img src="../img/coficab.png" alt="20px"></a>
+        <a href="#"><img src="../../img/coficab.png" alt="20px"></a>
         <ul class="nav nav-pills">
                 <li><a href="home.php">Home</a></li>
                 <li class="active"><a href="warehousestatus.php">Warehouse Status</a></li>
                 <li><a href="rackinformation.php">Information for Rack</a></li>
                 <li ><a href="crud.php">Crud</a></li>
                 <li><a href="transactions.php">Transactions</a></li>
+                <li><a href="../../loginout.php">login Out</a></li>
             </ul>
             <br>
     </div>
@@ -35,7 +46,7 @@
 <div class="section1">
     <div>
     <canvas id="rA"></canvas>
-    <script type="text/javascript" src="../js/indicadores.js"></script>
+    <script type="text/javascript" src="../../js/indicadores.js"></script>
 <br>
  <label class="A">A</label>
 </div>

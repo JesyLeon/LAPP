@@ -38,6 +38,7 @@
                 <li><a href="rackinformation.php">Information for Rack</a></li>
                 <li class="active"><a href="crud.php">Crud</a></li>
                 <li><a href="transactions.php">Transactions</a></li>
+                <li><a href="../../loginout.php">login Out</a></li>
             </ul>
             <br>
     </div>

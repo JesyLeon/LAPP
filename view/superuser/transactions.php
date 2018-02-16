@@ -134,16 +134,6 @@ if($id_type_user != 1){
    <div class="botones">
 				<div id="izquierda">
 					<form action="../../../controlador/admin/reportes/concepto_entregas/concepto_entregas_general.php" method="post" id="insert_form" accept-charset="utf-8">
-<<<<<<< HEAD
-						<input type="submit" name="reporte_general" id="insert" value="General report" class="btn btn-success">
-					</form>
-				</div>
-				<div id="centrado">
-					<a class='btn btn-success' value="report_month" data-toggle="modal" href="#Reporte_Mensual">Monthly report <!--<span class="fa fa-file-excel-o"></span>--></a>
-				</div>
-				<div id="derecha">
-					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Daily report <!--<span class="fa fa-file-excel-o"></span>--></a>
-=======
 						<input type="submit" name="reporte_general" id="insert" value="Report General" class="btn btn-success">
 					</form>
 				</div>
@@ -152,7 +142,6 @@ if($id_type_user != 1){
 				</div>
 				<div id="derecha">
 					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Report of day <!--<span class="fa fa-file-excel-o"></span>--></a>
->>>>>>> 4b0536f3d7f427a58e7b6988a8ceae0f9e72c101
 				</div>							
 			</div><br>
 

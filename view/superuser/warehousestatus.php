@@ -1,4 +1,5 @@
-<?phinclude("../../model/connection.php");
+<?php
+include_once("../../model/connection.php");
     include("../../controller/security.php");
     
     if($id_type_user != 1){
@@ -20,7 +21,70 @@
     <!--Menu-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/Chart.bundle.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+            var datos={//DATOS A MOSTRAR EN EL CHART
+                 //LABELS EN EJE X
+                labels:[
+                    <?php
+                        $sql="SELECT location,spools FROM racks";
+                        $result= mysqli_query($conexion,$sql);
+                        while($registros=mysqli_fetch_array($result))
+                        {
+                          ?>
+                        '<?php echo $registros["location"]?>',
+                        <?php
+                        }
+                    ?>
+                ],
+                datasets:[{//DATOS QUE MUESTRAN LAS CANTIDADES DE LA COLUMNA
+                    label: "Racks",
+                    backgroundColor: "rgba( 40, 180, 99 ,0.5)",
+                    data:<?php
+                        $sql="SELECT * FROM racks";
+                        $result=mysqli_query($conexion, $sql);
+                        ?>
+                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["spools"] ?>,
+                    <?php }?>]
+                    
+                }]
+            };
+
+            //PROPIEDADES DEL CHART
+            var canvas=document.getElementById("chart").getContext('2d');
+            window.bar=new Chart(canvas,{
+                type:"bar",
+                data:datos,
+                options:{
+                    elements: {
+                        rectangle:{
+                            boderWidth:1,
+                            borderColor:"rgb(0,255,0)",
+                            borderSkipped: "bottom"
+                        }
+                    },
+                    responsive: true,
+                    title:{
+                        display:true,
+                        text: "Warehouse status"
+                    }
+                }
+            });
+
+        
+       
+
+
+
+       function getRandom(){
+           return Math.round(Math.random() * 100);
+       }
+            
+        
+    });
+    </script>
     <title>Warehouse Status</title>
 </head>
 <body>
@@ -42,47 +106,8 @@
 <div class="container">
     <h2>Warehouse Status</h2>
     <br>
-    <div class="iA">
-    <canvas id="rA"></canvas>
-    <script type="text/javascript" src="../../js/indicadores.js"></script>
-<br>
- <label class="A">A</label>
-</div>
-
-<div class="iB">
-    <canvas id="rB"></canvas>
-    <script type="text/javascript" src="../../js/indicadores.js"></script><br>
-    <label class="B">B</label>
-    </div>
-
-<div class="iC">
-    <canvas id="rC"></canvas>
-    <script type="text/javascript" src="../../js/indicadores.js"></script><br>
-    <label class="C">C</label>
-    </div>
-
-<div class="iD">
-    <canvas id="rD"></canvas>
-    <script type="text/javascript" src="../../js/indicadores.js"></script><br>
-    <label class="D">D</label>
-    </div>
-    
-<div class="iE">
-    <canvas id="rE"></canvas
-    <script type="text/javascript" src="../../js/indicadores.js"></script><br>
-    <label class="E">E</label>
-    </div>
-
-<div class="iF">
-    <canvas id="rF"></canvas>
-    <script type="text/javascript" src="../../js/indicadores.js"></script><br>
-    <label class="F">F</label>
-    </div>
-
-<div class="iG">
-    <canvas id="rG"></canvas>
-    <script type="text/javascript" src="../../js/indicadores.js"></script><br>
-    <label class="G">G</label>
+    <div id="canvas-container" style="width:50%;">
+        <canvas id="chart" width="500" height="350"></canvas>
     </div>
 
 </div>

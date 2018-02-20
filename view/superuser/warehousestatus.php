@@ -71,17 +71,7 @@ include_once("../../model/connection.php");
                         text: "Warehouse status"
                     }
                 }
-            });
-
-        
-       
-
-
-
-       function getRandom(){
-           return Math.round(Math.random() * 100);
-       }
-            
+            });  
         
     });
     </script>

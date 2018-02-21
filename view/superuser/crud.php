@@ -26,7 +26,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--Table-->
+  <link rel="stylesheet" href="../../css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="../../js/jquery.dataTables.min.js"></script>
     <title>Crud</title>
+    
+  	</script>
 </head>
 <body>
 <nav class="bar-horizon">
@@ -52,7 +58,7 @@
 </nav>
     
 <div class="container">   
-<div class="table-responsive">  
+<div class="table-responsive" id="myTable">  
      <h2 >CRUD</h2><br />  
      <div id="datos">
      </div>                 

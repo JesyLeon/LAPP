@@ -1,3 +1,24 @@
+<script>
+  		$(document).ready(function() {
+  			$('#myTable').DataTable({
+  				"order":[[2, "desc"]],
+  				"language":{
+  				  "lengthMenu": "Show _MENU_ records per page",
+  			  	"info": "Showing page _PAGE_ of _PAGES_",
+  				  "infoEmpty": "There are no records available",
+  				  "infoFiltered": "(Filtered from _MAX_ records)",
+  				  "loadingRecords": "Loading...",
+  				  "processing": "Processing...",
+  				  "search": "Search",
+  				  "zeroRecords": "No matching records were found",
+  				  "paginate":{
+  					  "next": "Next",
+  					  "previous": "Previous"
+  					},
+  				}
+  			});
+          });
+          </script>
 <?php  
  $connect = mysqli_connect("localhost", "root", "", "lapp");  
  $output = '';  
@@ -46,3 +67,4 @@
       </div>';  
  echo $output; 
  ?>
+  

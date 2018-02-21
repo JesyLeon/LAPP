@@ -1,3 +1,7 @@
+  <!--Table-->
+  <link rel="stylesheet" href="../../css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="../../js/jquery.dataTables.min.js"></script>
 <script>
   		$(document).ready(function() {
   			$('#myTable').DataTable({

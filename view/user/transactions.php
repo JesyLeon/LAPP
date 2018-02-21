@@ -12,7 +12,7 @@
 	if(!empty($_POST)){
 		$value = $_POST['filter'];
 		if(!empty($value)){
-			$brouse = "WHERE shift LIKE '%$value%', num_trans LIKE '%$value%', date_trans LIKE '%$value%'";
+			$brouse = "WHERE date_trans LIKE '%$value%'";
 			
 		}
 	}
@@ -76,18 +76,25 @@
 <nav class="bar-horizon">
     <div class="logocoficab">
         <a href="#"><img src="../../img/coficab.png" alt="20px"></a>
-        
-        <ul class="nav nav-pills">
-            <li><a href="home.php">Home</a></li>
-            <li><a href="warehousestatus.php">Warehouse Status</a></li>
-            <li><a href="rackinformation.php">Information for Rack</a></li>
-            <li><a href="crud.php">Crud</a></li>
-						<li class="active"><a href="transactions.php">Transactions</a></li>
-						<li><a href="../../loginout.php">login Out</a></li>
-          </ul>
-          <br>
-          
-    </div>
+      
+            <ul class="nav nav-pills">
+                <li><a href="home.php">Home</a></li>
+                <li><a href="warehousestatus.php">Warehouse Status</a></li>
+                <li><a href="rackinformation.php">Information for Rack</a></li>
+                <li><a href="crud.php">Crud</a></li>
+                <li class="active"><a href="transactions.php">Transactions</a></li>
+            </ul>
+    </div>   
+    <div class="loginout">
+		<div class="centrado">
+			<?php
+    		    if(isset($_SESSION['name_user'])){
+                echo "Welcome ".$_SESSION['name_user']." | ";
+            }
+       	    ?><a href="../../loginout.php">Login Out</a>
+		</div>
+	</div>            
+    
 </nav>
 
 <div class="container">

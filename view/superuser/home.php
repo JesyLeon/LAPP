@@ -39,12 +39,17 @@
                 <li><a href="rackinformation.php">Information for Rack</a></li>
                 <li ><a href="crud.php">Crud</a></li>
                 <li><a href="transactions.php">Transactions</a></li>
-                <li><a href="../../loginout.php">login Out</a></li>
-            </ul>            
-     <br>
-
+            </ul>  
     </div>
-    
+    <div class="loginout">
+		<div class="centrado">
+			<?php
+    		    if(isset($_SESSION['name_user'])){
+                echo "Welcome ".$_SESSION['name_user']." | ";
+            }
+       	    ?><a href="../../loginout.php">Login Out</a>
+		</div>
+	</div>
    
 </nav>
 

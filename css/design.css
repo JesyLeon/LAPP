@@ -31,35 +31,56 @@ body {
 	max-height: 100%;
 }
 
-.login {
-	float: right;
-}
-
 .logocoficab{
-	background:  #0E2245;
-	width: 20%;
-	padding: .5%;
+	/*background:  #0E2245;*/
+	background:  #fff;
+	width: 15%;
+	padding: .2%;
+	display: block;
+	border: #0E2245 5px solid;
 }
 
 .logocoficab img {
 	margin: 10px auto;
-	margin-top: 25px;
-	margin-left: 10px;
-	display: inline-block;
-	width: 65%;
+	width: 100%;
 	align-content: center;
-	position: relative;
+	margin-left: auto;
+    margin-right: auto;
 }
 
  .nav-pills{ 
-	background: #0E2245;
+	/*background: #0E2245;*/
 	Margin: -40px;
-	margin-left: 280px;
+	margin-left: 110%;
 	width: 250%;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12pt;
 	font-weight: bold;
 	position: relative;
+}
+
+.loginout{
+	/*background:  #c0392b;*/
+	float: right;
+	top: -40px;
+	position: relative;
+	width: 15%;
+	
+}
+
+.loginout .centrado {
+	display: inline-block;
+	float: initial;
+	color: white;
+}
+
+.loginout a{
+	color: white;
+	font-weight: bold
+}
+
+.loginout a:hover {
+	color: #2695fe;
 }
 
 h2{

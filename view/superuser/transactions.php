@@ -13,13 +13,19 @@ if($id_type_user != 1){
 	if(!empty($_POST)){
 		$value = $_POST['filter'];
 		if(!empty($value)){
-			$brouse = "WHERE shift LIKE '%$value%', num_trans LIKE '%$value%', date_trans LIKE '%$value%'";
+			$brouse = "SELECT shift, num_ trans, date_trans FROM transactions WHERE date_trans LIKE '%".$value."%'";
 			
 		}
 	}
 
 	$table="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
-  $result = $conexion->query($table);
+	$result = $conexion->query($table);
+	
+	/*if(isset($_POST['filter'])){
+		$q = $mysli->real_escape_string($_POST['filter']);
+		$table = "SELECT shift, num_ trans, date_trans FROM transactions WHERE date_trans LIKE '%".$value."%'";
+			
+	}*/
   
   header("Refresh: 60; URL='transactions.php'");
 
@@ -86,11 +92,17 @@ if($id_type_user != 1){
             <li><a href="rackinformation.php">Information for Rack</a></li>
             <li><a href="crud.php">Crud</a></li>
 						<li class="active"><a href="transactions.php">Transactions</a></li>
-						<li><a href="../../loginout.php">login Out</a></li>
           </ul>
-          <br>
-          
-    </div>
+		</div>
+		<div class="loginout">
+			<div class="centrado">
+				<?php
+    		       if(isset($_SESSION['name_user'])){
+            echo "Welcome ".$_SESSION['name_user']." | ";
+          }
+       	?><a href="../../loginout.php">Login Out</a>
+			</div>
+		</div>
 </nav>
 
 <div class="container">

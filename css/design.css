@@ -148,96 +148,18 @@ color: #333;
 font-size: 16px;
 padding: 14px 16px 12px;
 }
+#chart2{
+	margin: -250px;
+	margin-left: 330px;
+}
+#chart3{
+	margin: -270px;
+	margin-left: 710px;
+}
+
 
 
 
-
-/*WHS STATUS*/
-#rA{
-	width:100px; 
-	height:250px;
-	background: #196f3d;
-	border: solid 1px #000;
-}
-.iB{
-	margin: -280px;
-	margin-left: 120px;
-}
-#rB{
-	width:100px; 
-	height:250px;
-	margin-left: 15px;
-	background:  #c0392b;
-	border: solid 1px #000;
-}
-.iC{
-	margin: -280px;
-	margin-left: 255px;
-}
-#rC{
-	width:100px; 
-	height:250px;
-	margin-left: 15px;
-	background: #1f618d;
-	border: solid 1px #000;
-}
-.iD{
-	margin: -280px;
-	margin-left: 390px;
-}
-#rD{
-	width:100px; 
-	height:250px;
-	margin-left: 15px;
-	background: #196f3d;
-	border: solid 1px #000;
-}
-.iE{
-	margin: -280px;
-	margin-left: 525px;
-}
-#rE{
-	width:100px; 
-	height:250px;
-	margin-left: 15px;
-	background: #c0392b;
-	border: solid 1px #000;
-}
-.iF{
-	margin: -280px;
-	margin-left: 660px;
-}
-#rF{
-	width:100px; 
-	height:250px;
-	margin-left: 15px;
-	background: #1f618d;
-	border: solid 1px #000;
-}
-
-.iG{
-	margin: -280px;
-	margin-left: 795px;
-}
-#rG{
-	width:100px; 
-	height:250px;
-	margin-left: 15px;
-	background: #196f3d;
-	border: solid 1px #000;
-}
-#myCanvas{
-margin: 70px;
-margin-left: 800px;
-}
-
-.A{margin-left: 45px;}
-.B{	margin-left: 60px;}
-.C{	margin-left: 60px;}
-.D{	margin-left: 60px;}
-.E{	margin-left: 60px;}
-.F{	margin-left: 60px;}
-.G{	margin-left: 60px;}
 
 
 

@@ -21,6 +21,14 @@
 									$fila['spools'],
 									$fila['status']
 								));
+	}
+	if ($status== "GENERAL"){
+		$reporte = $conexion->query("SELECT location, spools, status FROM racks");
+		while($fila = $reporte->fetch_assoc())
+			fputcsv($salida, array ($fila['location'],
+									$fila['spools'],
+									$fila['status']
+								));
 	}               
 
 ?>

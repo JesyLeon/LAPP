@@ -85,10 +85,7 @@
     
 <div class="container">
     <h2>Information for Rack</h2>
-  
-
-    <h3>Information for Rack</h3><br>
-        
+  <br>       
     <table class="table table-striped table-bordered" id="myTable" >
       <thead>
         <tr>
@@ -134,16 +131,6 @@ switch($row['status']){
 $fecha_time = date("d/m/Y, H:i:s");  
 ?>
     Last Update: <input type="text" id="fecha" value="<?php echo $fecha_time; ?>">
-    <br>
-
-       <!--Button for print the excel report
-    <button type="button" class="btn btn-success">Print</button>
-
-   <script> 
-    $(document).on('click', '.btn', function(){
-   alert("Excel file");//prueba
-    });
-   </script>-->
 <div class="botones">
 					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Print report <!--<span class="fa fa-file-excel-o"></span>--></a>
 			<div class="modal fade" id="Reporte_Diario">
@@ -157,6 +144,7 @@ $fecha_time = date("d/m/Y, H:i:s");
 							<form action="../../controller/superuser/reports/racks/report_status.php" method="post" id="insert_form" accept-charset="utf-8">
 								<label>Status</label><!--combo-->
                                     <select name="status" id="options" class="form-control">
+                                        <option value="GENERAL">GENERAL</option>
                                         <option value="EMPTY">EMPTY</option>
                                         <option value="FULL">FULL</option>
                                         <option value="OVER">OVER</option>

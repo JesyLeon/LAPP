@@ -58,7 +58,7 @@
 </nav>
     
 <div class="container">   
-<div class="table-responsive" id="myTable">  
+<div class="table-responsive">  
      <h2 >CRUD</h2><br />  
      <div id="datos">
      </div>                 

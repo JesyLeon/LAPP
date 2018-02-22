@@ -1,10 +1,6 @@
 <?php
-<<<<<<< HEAD
-    
-    include("../../model/connection.php");
-=======
+
 include_once("../../model/connection.php");
->>>>>>> 219b2db9b7ed03c936b6f31ca1c3f8ba3b1e7af4
     include("../../controller/security.php");
     
     if($id_type_user != 1){

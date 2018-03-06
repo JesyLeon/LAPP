@@ -145,7 +145,7 @@ $fecha_time = date("d/m/Y, H:i:s");
 						<div class="modal-body">
 							<form action="../../controller/superuser/reports/racks/report_status.php" method="post" id="insert_form" accept-charset="utf-8">
 								<label>Status</label><!--combo-->
-                                    <select name="status" id="options" class="form-control">
+                                    <select name="loca" id="options" class="form-control">
                                         <option value="GENERAL">GENERAL</option>
                                         <option value="EMPTY">EMPTY</option>
                                         <option value="FULL">FULL</option>

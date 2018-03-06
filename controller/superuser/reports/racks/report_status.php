@@ -1,7 +1,7 @@
 <?php 
 	include("../../../../model/connection.php"); 
 
-	$status = $_POST['status'];
+	$status = $_POST['loca'];
 
 	if(isset($_POST['genera_reporte'])){
 		//Nombre del Archivo y Charset

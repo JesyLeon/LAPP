@@ -7,10 +7,12 @@
         exit();
     }
 
-	$table="SELECT id_racks, location, spools, status FROM racks ";
-	$result = $conexion->query($table);
+	//$table="SELECT id_racks, location, spools, status FROM racks ";
+	//$result = $conexion->query($table);
 
-    header("Refresh: 60; URL='rackinformation.php'");
+    //header("Refresh: 60; URL='rackinformation.php'");
+    $table="SELECT t_loca, count(t_loca) as loca from withlocation group by t_loca";//para contabilizar los spools
+	$result = $conexion->query($table);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,22 +102,22 @@
                 ?>
                 <tr>
                     <!--<td><php echo $row['id_salida']; ?></td>-->
-                    <td><?php echo $row['location']; ?></td>
-                    <td><?php echo $row['spools']; ?></td>
+                    <td><?php echo $row['t_loca']; ?></td>
+                    <td><?php echo $row['loca']; ?></td>
                     <?php 
 
-switch($row['status']){
-  case 'EMPTY':
-    echo "<td bgcolor='#ebe407'>$row[status]</td>";
+switch($row['loca']){
+  case $row['loca'] < '6':
+    echo "<td bgcolor='#ebe407'>EMPTY</td>";//yellow. empty
     break;
-  case 'FULL':
-    echo "<td bgcolor='#19d306'>$row[status]</td>";
+  case $row['loca'] == '6':
+    echo "<td bgcolor='#19d306'>FULL</td>";//green. full
     break;
-    case 'OVER':
-    echo "<td bgcolor='#eb3713'>$row[status]</td>";
+    case $row['loca'] > '6':
+    echo "<td bgcolor='#eb3713'>OVER</td>";//RED. OVER
     break;
   default:
-    echo "<td>$row[status]</td>";
+    echo "<td>WITHOUT ANY SPOOLS</td>";
     break;
 }
 ?>

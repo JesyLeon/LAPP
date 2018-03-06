@@ -75,6 +75,84 @@
         
     });
     </script>
+
+    <script type="text/javascript">
+
+$(document).ready(function(){
+    //SENTENCIA SQL
+        <?php
+            $sql="SELECT * FROM racks";
+            $result=mysqli_query($conexion, $sql);
+        ?>
+
+    //GUARDAR LOS REGISTROS
+        var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["spools"] ?>,
+                <?php }?>];
+    //RETORNAR COLOR DEPENDIENDO DE LOS VALORES GUARDADOS EN dtos
+        const colours = dtos.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
+
+
+        var datos={//DATOS A MOSTRAR EN EL CHART
+             //LABELS EN EJE X
+            labels:[
+                <?php
+                    $sql="SELECT location,spools FROM racks";
+                    $result= mysqli_query($conexion,$sql);
+                    while($registros=mysqli_fetch_array($result))
+                    {
+                      ?>
+                    '<?php echo $registros["location"]?>',
+                    <?php
+                    }
+                ?>
+            ],
+
+            datasets:[{//DATOS QUE MUESTRAN LAS CANTIDADES DE LA COLUMNA
+               label: "Racks",
+                //LOS DATOS SERAN IGUALES A LA VARIABLE dtos
+                data: dtos,
+                //El color será igual a lo que retorne colours
+                backgroundColor: colours,
+                borderWidth: 1,   
+                               
+            }],
+           
+        };
+
+        //PROPIEDADES DEL CHART
+        var canvas=document.getElementById("chart").getContext('2d');
+        window.bar=new Chart(canvas,{
+            type:"bar",
+            data:datos,
+            options:{
+                scales: {
+                      yAxes: [{
+                           ticks: {
+                            beginAtZero: true,                           
+                                      },
+                        scaleLabel: {
+                          display: true,
+                     labelString: "STATUS PER RACKS"
+                  
+                             }
+                         }]
+                },
+                elements: {
+                    rectangle:{
+                        boderWidth:1,
+                       // borderColor:"rgb(0,255,0)",
+                        borderSkipped: "bottom"
+                    }
+                },
+                responsive: true,
+            }
+        });  
+    
+});
+
+
+</script>
+
     <title>Warehouse Status</title>
 </head>
 <body>

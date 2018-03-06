@@ -3,6 +3,38 @@
 include("../../model/connection.php");
 include("../../controller/security.php");
 
+include("../../model/conn_sql.php");
+
+/*Select count HU withoutlocation*/
+
+		/*$sql = "SELECT COUNT(*) FROM withoutlocation";
+		$result = $conexion->query($sql);
+
+		while($row= $result->fetch_assoc()){
+			$count = $row['COUNT(*)'];
+			echo "Spools without locacion";
+			echo $count;
+		}*/
+
+		
+
+		/*Select count HU withlocation*/
+		/*$sql = "SELECT COUNT(*) FROM withlocation";
+		$result = $conexion->query($sql);
+
+		while($row= $result->fetch_assoc()){
+			$count = $row['COUNT(*)'];
+			echo "Spools with locacion";
+			echo $count;*/
+
+		/*INSERCIÓN DE DATOS A TABLA CON LOCACIÓN */
+		/*$hu_withlocation = "INSERT INTO hu_withlocation values ('$count')";
+		$result = mysqli_query($conexion,$hu_withlocation)
+		or die ("Error al insertar los registros");
+
+		mysqli_close($conexion);
+	}*/
+
 if($id_type_user != 1){
     header("location: ../../login.php");
     exit();
@@ -18,7 +50,8 @@ if($id_type_user != 1){
 		}
 	}
 
-	$table="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
+	//$table="SELECT id_trans, shift_trans, num_spol, num_trans, date_trans FROM transactions, without_location WHERE date_trans = date_validation and shift_trans = shift_validation";
+	$table="SELECT count_zero, count_loc FROM hu_withoulocation, hu_withlocation";
 	$result = $conexion->query($table);
 	
 	/*if(isset($_POST['filter'])){
@@ -27,7 +60,7 @@ if($id_type_user != 1){
 			
 	}*/
   
-  header("Refresh: 60; URL='transactions.php'");
+ /* header("Refresh: 60; URL='transactions.php'");*/
 
 ?>
 
@@ -113,9 +146,10 @@ if($id_type_user != 1){
     <table class="table table-striped table-bordered" id="myTable" >
       <thead>
         <tr>
-          <th>Shift</th>
-          <th>N°. Spools Transactions</th>
-          <th>Date</th>
+			<th>Shift</th>
+			<th>Spools Without Location</th>
+          	<th>Spools Transactions</th>
+          	<th>Date</th>
         </tr>
       </thead>
       <tbody>
@@ -124,9 +158,10 @@ if($id_type_user != 1){
 					?>
 					<tr>
 						<!--<td><php echo $row['id_salida']; ?></td>-->
-						<td><?php echo $row['shift']; ?></td>
-						<td><?php echo $row['num_trans']; ?></td>
-						<td><?php echo $row['date_trans']; ?></td>
+						<td><?/*php echo $row['shift_trans'];*/ ?></td>
+						<td><?php echo $row['count_zero']; ?></td>
+						<td><?php echo $row['count_loc']; ?></td>
+						<td><?/*php echo $row['date_trans'];*/ ?></td>
 					</tr>
           <?php
           }

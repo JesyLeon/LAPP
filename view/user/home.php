@@ -24,9 +24,20 @@
     <script type="text/javascript" src="../../js/Chart.bundle.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--Grafics-->
-      <script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function(){
         //GRAFICA 1
+            <?php
+                $sql="SELECT * FROM racks";
+                $result=mysqli_query($conexion, $sql);
+            ?>
+         
+        //GUARDAR LOS REGISTROS
+            var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["spools"] ?>,
+                    <?php }?>];
+       
+        //RETORNAR COLOR DEPENDIENDO DE LOS VALORES GUARDADOS EN dtos
+            const colours = dtos.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
             var datos={//DATOS A MOSTRAR EN EL CHART
                  //LABELS EN EJE X
                 labels:[
@@ -41,18 +52,19 @@
                         }
                     ?>
                 ],
+
                 datasets:[{//DATOS QUE MUESTRAN LAS CANTIDADES DE LA COLUMNA
-                    label: "Racks",
-                    backgroundColor: "rgba( 40, 180, 99 ,0.5)",
-                    data:<?php
-                        $sql="SELECT * FROM racks";
-                        $result=mysqli_query($conexion, $sql);
-                        ?>
-                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["spools"] ?>,
-                    <?php }?>]
-                    
-                }]
+                   label: "Racks",
+                    //LOS DATOS SERAN IGUALES A LA VARIABLE dtos
+                    data: dtos,
+                    //El color será igual a lo que retorne colours
+                    backgroundColor: colours,
+                    borderWidth: 1,   
+                                   
+                }],
+               
             };
+
             //GRAFICA 2
             var datos1={//DATOS A MOSTRAR EN EL CHART
                  //LABELS EN EJE X
@@ -68,24 +80,32 @@
                         }
                     ?>
                 ],
+
                 datasets:[{//DATOS QUE MUESTRAN LAS CANTIDADES DE LA COLUMNA
-                    label: "Racks",
-                    backgroundColor: "rgba( 40, 180, 99 ,0.5)",
-                    data:<?php
-                        $sql="SELECT * FROM racks";
-                        $result=mysqli_query($conexion, $sql);
-                        ?>
-                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["spools"] ?>,
-                    <?php }?>]
-                    
-                }]
+                   label: "Racks",
+                    //LOS DATOS SERAN IGUALES A LA VARIABLE dtos
+                    data: dtos,
+                    //El color será igual a lo que retorne colours
+                    backgroundColor: colours,
+                    borderWidth: 1,   
+                                   
+                }],
+               
             };
+
             //GRAFICA 3
+            <?php
+                $sql1="SELECT * FROM crud";
+                $result1=mysqli_query($conexion, $sql1);
+            ?>
+            var dto = [<?php while ($registros1=mysqli_fetch_array($result1)){?><?php echo $registros1["capacity"] ?>,
+                    <?php }?>];
+            const colour = dto.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
             var datos2= {
                 type:"pie",
                 data:{
                     datasets:[{
-                    backgroundColor: "rgba( 40, 180, 99 ,0.5)",
+                    backgroundColor: colour,
                     data:<?php
                         $sql="SELECT * FROM crud";
                         $result=mysqli_query($conexion, $sql);
@@ -117,14 +137,25 @@
             };
 
              //GRAFICA 4
+             <?php
+                $sql2="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";;
+                $result2=mysqli_query($conexion, $sql2);
+            ?>
+            var dt = [<?php while ($registros2=mysqli_fetch_array($result2)){?><?php echo $registros2["suma"] ?>,
+                    <?php }?>];
+            const col = dt.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
              var datos3= {
                 type:"line",
                 data:{
                     datasets:[{
-                    fill: false,
-                    borderColor: "rgba( 40, 180, 99 ,0.5)",
-                    data:<?php
-                        $sql="SELECT shift,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift`";
+                    fill: true,
+                    fillColor: "rgba(151,249,190,0.5)",
+                    borderColor:"rgb(127, 179, 213)",
+                    pointBackgroundColor: col,
+                    pointBorderColor: col,
+                    pointBorderWidth: 6,
+                   data:<?php
+                        $sql="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";
                         $result=mysqli_query($conexion, $sql);
                         ?>
                        [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["suma"] ?>,
@@ -132,12 +163,12 @@
                 }],
                 labels:[
                     <?php
-                        $sql="SELECT shift, num_trans FROM transactions GROUP BY shift";
+                        $sql="SELECT shift_trans, num_trans FROM transactions GROUP BY shift_trans";
                         $result= mysqli_query($conexion,$sql);
                         while($registros=mysqli_fetch_array($result))
                         {
                           ?>
-                        '<?php echo $registros["shift"]?>',
+                        '<?php echo $registros["shift_trans"]?>',
                         <?php
                         }
                     ?>
@@ -153,13 +184,19 @@
                 }
             };
 
-
             //PROPIEDADES DEL CHART1
             var canvas=document.getElementById("chart").getContext('2d');
             window.bar=new Chart(canvas,{
                 type:"bar",
                 data:datos,
                 options:{
+                    scales: {
+                          yAxes: [{
+                               ticks: {
+                                beginAtZero: true,                           
+                                          }
+                             }]
+                    },
                     elements: {
                         rectangle:{
                             boderWidth:1,
@@ -180,6 +217,13 @@
                 type:"bar",
                 data:datos1,
                 options:{
+                    scales: {
+                          yAxes: [{
+                               ticks: {
+                                beginAtZero: true,                           
+                                          }
+                             }]
+                    },
                     elements: {
                         rectangle:{
                             boderWidth:1,
@@ -196,10 +240,12 @@
 
              //PROPIEDADES DEL CHART4
              var canvas=document.getElementById("chart3").getContext('2d');
-            window.line=new Chart(canvas,datos3);    
+            window.line=new Chart(canvas,datos3);
+     
         
     });
     </script>
+
     <title>Home</title>
 </head>
 <body>

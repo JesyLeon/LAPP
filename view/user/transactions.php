@@ -17,8 +17,9 @@
 		}
 	}
 
-	$table="SELECT id_trans, shift, num_trans, date_trans FROM transactions ";
-  $result = $conexion->query($table);
+	$table="SELECT id_trans, shift_trans, num_spol, num_trans, date_trans FROM transactions, without_location WHERE date_trans = date_validation and shift_trans = shift_validation";
+	$result = $conexion->query($table);
+	
   
   header("Refresh: 60; URL='transactions.php'");
 
@@ -104,8 +105,9 @@
     
     <table class="table table-striped table-bordered" id="myTable" >
       <thead>
-        <tr>
-          <th>Shift</th>
+			<tr>
+					<th>Shift</th>
+					<th>N°. Spools Without Location</th>
           <th>N°. Spools Transactions</th>
           <th>Date</th>
         </tr>
@@ -116,7 +118,8 @@
 					?>
 					<tr>
 						<!--<td><php echo $row['id_salida']; ?></td>-->
-						<td><?php echo $row['shift']; ?></td>
+						<td><?php echo $row['shift_trans']; ?></td>
+						<td><?php echo $row['num_spol']; ?></td>
 						<td><?php echo $row['num_trans']; ?></td>
 						<td><?php echo $row['date_trans']; ?></td>
 					</tr>

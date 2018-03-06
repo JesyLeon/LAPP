@@ -140,11 +140,7 @@ include_once("../../model/connection.php");
 
              //GRAFICA 4
              <?php
-<<<<<<< HEAD
                 $sql2="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";;
-=======
-                $sql2="SELECT shift,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift`";;
->>>>>>> c2ead66f66e57b7f08dcfb1b22253ba495fb92d1
                 $result2=mysqli_query($conexion, $sql2);
             ?>
             var dt = [<?php while ($registros2=mysqli_fetch_array($result2)){?><?php echo $registros2["suma"] ?>,
@@ -160,13 +156,8 @@ include_once("../../model/connection.php");
                     pointBackgroundColor: col,
                     pointBorderColor: col,
                     pointBorderWidth: 6,
-<<<<<<< HEAD
                    data:<?php
                         $sql="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";
-=======
-                    data:<?php
-                        $sql="SELECT shift,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift`";
->>>>>>> c2ead66f66e57b7f08dcfb1b22253ba495fb92d1
                         $result=mysqli_query($conexion, $sql);
                         ?>
                        [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["suma"] ?>,
@@ -256,6 +247,7 @@ include_once("../../model/connection.php");
         
     });
     </script>
+
     <title>Home</title>
 </head>
 <body>
@@ -269,18 +261,18 @@ include_once("../../model/connection.php");
                 <li><a href="rackinformation.php">Information for Rack</a></li>
                 <li ><a href="crud.php">Crud</a></li>
                 <li><a href="transactions.php">Transactions</a></li>
-            </ul>  
-    </div>
+            </ul>
+    </div>   
     <div class="loginout">
-        <div class="centrado">
-            <?php
-                if(isset($_SESSION['name_user'])){
+		<div class="centrado">
+			<?php
+    		    if(isset($_SESSION['name_user'])){
                 echo "Welcome ".$_SESSION['name_user']." | ";
             }
-            ?><a href="../../loginout.php">Login Out</a>
-        </div>
-    </div>
-   
+       	    ?><a href="../../loginout.php">Login Out</a>
+		</div>
+	</div>            
+    
 </nav>
 
     
@@ -302,6 +294,12 @@ include_once("../../model/connection.php");
 
     </div>
     
+
+
+
+
+    
+
 
 </body>
 </html>

@@ -140,7 +140,11 @@ include_once("../../model/connection.php");
 
              //GRAFICA 4
              <?php
+<<<<<<< HEAD
                 $sql2="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";;
+=======
+                $sql2="SELECT shift,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift`";;
+>>>>>>> c2ead66f66e57b7f08dcfb1b22253ba495fb92d1
                 $result2=mysqli_query($conexion, $sql2);
             ?>
             var dt = [<?php while ($registros2=mysqli_fetch_array($result2)){?><?php echo $registros2["suma"] ?>,
@@ -156,8 +160,13 @@ include_once("../../model/connection.php");
                     pointBackgroundColor: col,
                     pointBorderColor: col,
                     pointBorderWidth: 6,
+<<<<<<< HEAD
                    data:<?php
                         $sql="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";
+=======
+                    data:<?php
+                        $sql="SELECT shift,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift`";
+>>>>>>> c2ead66f66e57b7f08dcfb1b22253ba495fb92d1
                         $result=mysqli_query($conexion, $sql);
                         ?>
                        [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["suma"] ?>,

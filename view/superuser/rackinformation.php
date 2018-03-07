@@ -11,7 +11,7 @@
 	//$result = $conexion->query($table);
 
     //header("Refresh: 60; URL='rackinformation.php'");
-    $table="SELECT t_loca, count(t_loca) as loca from withlocation group by t_loca";//para contabilizar los spools
+    $table="SELECT t_loca, count(t_loca) as loca from racks group by t_loca";//para contabilizar los spools
 	$result = $conexion->query($table);
 ?>
 <!DOCTYPE html>

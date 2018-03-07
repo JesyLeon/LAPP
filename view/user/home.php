@@ -28,12 +28,12 @@
     $(document).ready(function(){
         //GRAFICA 1
             <?php
-                $sql="SELECT * FROM racks";
+                 $sql="SELECT t_loca, count(t_loca) as loca from racks group by t_loca";
                 $result=mysqli_query($conexion, $sql);
             ?>
          
         //GUARDAR LOS REGISTROS
-            var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["spools"] ?>,
+            var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["loca"] ?>,
                     <?php }?>];
        
         //RETORNAR COLOR DEPENDIENDO DE LOS VALORES GUARDADOS EN dtos
@@ -42,12 +42,12 @@
                  //LABELS EN EJE X
                 labels:[
                     <?php
-                        $sql="SELECT location,spools FROM racks";
+                          $sql="SELECT t_loca FROM racks group by t_loca";
                         $result= mysqli_query($conexion,$sql);
                         while($registros=mysqli_fetch_array($result))
                         {
                           ?>
-                        '<?php echo $registros["location"]?>',
+                        '<?php echo $registros["t_loca"]?>',
                         <?php
                         }
                     ?>
@@ -70,12 +70,12 @@
                  //LABELS EN EJE X
                 labels:[
                     <?php
-                        $sql="SELECT location,spools FROM racks";
+                          $sql="SELECT t_loca FROM racks group by t_loca";
                         $result= mysqli_query($conexion,$sql);
                         while($registros=mysqli_fetch_array($result))
                         {
                           ?>
-                        '<?php echo $registros["location"]?>',
+                        '<?php echo $registros["t_loca"]?>',
                         <?php
                         }
                     ?>

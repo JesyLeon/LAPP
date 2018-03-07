@@ -1,6 +1,7 @@
 <?php
     include("../../model/connection.php");
     include("../../controller/security.php");
+   // include("../../model/rackInfo.php");
     
     if($id_type_user != 1){
         header("location: ../../login.php");

@@ -12,23 +12,54 @@
 		$salida = fopen('php://output', 'w');
 
 		//Encabezados
-		fputcsv($salida, array('Location', 'No. spools', 'Status'));//titulos de la tabla
+		fputcsv($salida, array('Location', 'No. spools'));//titulos de la tabla
 
 		//Query para crear el reporte
-		$reporte = $conexion->query("SELECT location, spools, status FROM racks WHERE status = '$status'");
+		/*$reporte = $conexion->query("SELECT  t_loca, count(t_loca) as loca FROM racks WHERE status = '$status' group by t_loca");
 		while($fila = $reporte->fetch_assoc())
-			fputcsv($salida, array ($fila['location'], 
-									$fila['spools'],
-									$fila['status']
-								));
+			fputcsv($salida, array ($fila['t_loca'], 
+									$fila['loca'],
+									//$fila['status']
+								));*/
+								if ($status== "EMPTY"){
+									$reporte = $conexion->query("SELECT t_loca, loca FROM vista_reporte WHERE loca < 6 group by t_loca");
+									while($fila = $reporte->fetch_assoc())
+										fputcsv($salida, array ($fila['t_loca'],
+																$fila['loca'],
+															
+																//,
+																//$fila['status']
+										));}
+
+										if ($status== "OVER"){
+											$reporte = $conexion->query("SELECT t_loca, loca FROM vista_reporte WHERE loca > 6 group by t_loca");
+											while($fila = $reporte->fetch_assoc())
+												fputcsv($salida, array ($fila['t_loca'],
+																		$fila['loca'],
+																	
+																		//,
+																		//$fila['status']
+												));}
+												if ($status== "FULL"){
+													$reporte = $conexion->query("SELECT t_loca, loca FROM vista_reporte WHERE loca = 6 group by t_loca");
+													while($fila = $reporte->fetch_assoc())
+														fputcsv($salida, array ($fila['t_loca'],
+																				$fila['loca'],
+																			
+																				//,
+																				//$fila['status']
+														));}
+		
+		if ($status== "GENERAL"){
+		$reporte = $conexion->query("SELECT t_loca, count(t_loca) as loca FROM racks  group by t_loca");
+		while($fila = $reporte->fetch_assoc())
+			fputcsv($salida, array ($fila['t_loca'],
+									$fila['loca'],
+
+									//,
+									//$fila['status']
+			));
 	}
-	if ($status== "GENERAL"){
-		$reporte = $conexion->query("SELECT location, spools, status FROM racks");
-		while($fila = $reporte->fetch_assoc())
-			fputcsv($salida, array ($fila['location'],
-									$fila['spools'],
-									$fila['status']
-								));
-	}               
+	}              
 
 ?>

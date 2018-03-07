@@ -51,7 +51,7 @@ if($id_type_user != 1){
 	}
 
 	//$table="SELECT id_trans, shift_trans, num_spol, num_trans, date_trans FROM transactions, without_location WHERE date_trans = date_validation and shift_trans = shift_validation";
-	$table="SELECT count_zero, count_loc FROM hu_withoulocation, hu_withlocation";
+	$table="SELECT num_woloca, num_loca, withlocation.t_vrdt FROM withoutlocation, withlocation";
 	$result = $conexion->query($table);
 	
 	/*if(isset($_POST['filter'])){
@@ -159,9 +159,9 @@ if($id_type_user != 1){
 					<tr>
 						<!--<td><php echo $row['id_salida']; ?></td>-->
 						<td><?/*php echo $row['shift_trans'];*/ ?></td>
-						<td><?php echo $row['count_zero']; ?></td>
-						<td><?php echo $row['count_loc']; ?></td>
-						<td><?/*php echo $row['date_trans'];*/ ?></td>
+						<td><?php echo $row['num_woloca']; ?></td>
+						<td><?php echo $row['num_loca']; ?></td>
+						<td><?php echo $row['t_vrdt']; ?></td>
 					</tr>
           <?php
           }

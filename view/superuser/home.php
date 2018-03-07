@@ -30,37 +30,30 @@ include_once("../../model/connection.php");
     $(document).ready(function(){
         //GRAFICA 1
             <?php
-                $sql="SELECT t_loca, count(t_loca) as loca from racks group by t_loca";
+                $sql="SELECT * FROM vista_gral ";
                 $result=mysqli_query($conexion, $sql);
             ?>
          
         //GUARDAR LOS REGISTROS
-            var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["loca"] ?>,
+            var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["A"] ?>,<?php echo $registros["B"] ?>,<?php echo $registros["C"]?>,
+            <?php echo $registros["D"]?>,<?php echo $registros["E"]?>,<?php echo $registros["F"]?>,<?php echo $registros["G"]?>,<?php echo $registros["H"]?>,<?php echo $registros["I"]?>,<?php echo $registros["J"]?>,<?php echo $registros["K"]?>,<?php echo $registros["L"]?>,<?php echo $registros["M"]?>,<?php echo $registros["N"]?>,<?php echo $registros["O"]?>,<?php echo $registros["P"]?>,<?php echo $registros["Q"]?>,<?php echo $registros["R"]?>,<?php echo $registros["S"]?>,<?php echo $registros["T"]?>,<?php echo $registros["U"]?>,<?php echo $registros["V"]?>,<?php echo $registros["W"]?>,<?php echo $registros["X"]?>,<?php echo $registros["Y"]?>,<?php echo $registros["Z"]?>,
                     <?php }?>];
        
         //RETORNAR COLOR DEPENDIENDO DE LOS VALORES GUARDADOS EN dtos
-            const colours = dtos.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
+            const colours = dtos.map((value) =>  {if (value > 1000) return 'red'; else if (value < 1000) return 'yellow'; else return 'green';});
             var datos={//DATOS A MOSTRAR EN EL CHART
                  //LABELS EN EJE X
                 labels:[
-                    <?php
-                         $sql="SELECT t_loca FROM racks group by t_loca";
-                        $result= mysqli_query($conexion,$sql);
-                        while($registros=mysqli_fetch_array($result))
-                        {
-                          ?>
-                        '<?php echo $registros["t_loca"]?>',
-                        <?php
-                        }
-                    ?>
+                    'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
                 ],
 
                 datasets:[{//DATOS QUE MUESTRAN LAS CANTIDADES DE LA COLUMNA
-                   label: "Racks",
+                   label: "racks",
                     //LOS DATOS SERAN IGUALES A LA VARIABLE dtos
                     data: dtos,
                     //El color será igual a lo que retorne colours
                     backgroundColor: colours,
+                    //backgroundColor: ['blue','red','yellow'],
                     borderWidth: 1,   
                                    
                 }],
@@ -68,64 +61,30 @@ include_once("../../model/connection.php");
             };
 
             //GRAFICA 2
-            var datos1={//DATOS A MOSTRAR EN EL CHART
-                 //LABELS EN EJE X
-                labels:[
-                    <?php
-                       $sql="SELECT t_loca FROM racks group by t_loca";
-                        $result= mysqli_query($conexion,$sql);
-                        while($registros=mysqli_fetch_array($result))
-                        {
-                          ?>
-                        '<?php echo $registros["t_loca"]?>',
-                        <?php
-                        }
-                    ?>
-                ],
-
-                datasets:[{//DATOS QUE MUESTRAN LAS CANTIDADES DE LA COLUMNA
-                   label: "Racks",
-                    //LOS DATOS SERAN IGUALES A LA VARIABLE dtos
-                    data: dtos,
-                    //El color será igual a lo que retorne colours
-                    backgroundColor: colours,
-                    borderWidth: 1,   
-                                   
-                }],
-               
-            };
+           
 
             //GRAFICA 3
             <?php
-                $sql1="SELECT * FROM crud";
+                $sql1="SELECT * FROM vista_gral";
                 $result1=mysqli_query($conexion, $sql1);
             ?>
-            var dto = [<?php while ($registros1=mysqli_fetch_array($result1)){?><?php echo $registros1["capacity"] ?>,
+            var dto = [<?php while ($registros1=mysqli_fetch_array($result1)){?><?php echo $registros1["A"] ?>,<?php echo $registros1["B"] ?>,<?php echo $registros1["G"] ?>,
                     <?php }?>];
-            const colour = dto.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
+            const colour = dto.map((value) =>  {if (value > 1000) return 'red'; else if (value < 1000) return 'yellow'; else return 'green';});
             var datos2= {
                 type:"pie",
                 data:{
                     datasets:[{
                     backgroundColor: colour,
                     data:<?php
-                        $sql="SELECT * FROM crud";
+                        $sql="SELECT * FROM vista_gral";
                         $result=mysqli_query($conexion, $sql);
                         ?>
-                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["capacity"] ?>,
+                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["A"] ?>,<?php echo $registros["B"] ?>,<?php echo $registros["G"] ?>,
                     <?php }?>]  
                 }],
                 labels:[
-                    <?php
-                        $sql="SELECT location,capacity FROM crud";
-                        $result= mysqli_query($conexion,$sql);
-                        while($registros=mysqli_fetch_array($result))
-                        {
-                          ?>
-                        '<?php echo $registros["location"]?>',
-                        <?php
-                        }
-                    ?>
+                    'EMPTY','OVER','FULL'
                 ]
                
                 },
@@ -214,28 +173,7 @@ include_once("../../model/connection.php");
                 }
             });  
              //PROPIEDADES DEL CHART2
-            var canvas=document.getElementById("chart1").getContext('2d');
-            window.bar=new Chart(canvas,{
-                type:"bar",
-                data:datos1,
-                options:{
-                    scales: {
-                          yAxes: [{
-                               ticks: {
-                                beginAtZero: true,                           
-                                          }
-                             }]
-                    },
-                    elements: {
-                        rectangle:{
-                            boderWidth:1,
-                            borderColor:"rgb(0,255,0)",
-                            borderSkipped: "bottom"
-                        }
-                    },
-                    responsive: true,
-                }
-            });  
+             
              //PROPIEDADES DEL CHART3
             var canvas=document.getElementById("chart2").getContext('2d');
             window.pie=new Chart(canvas,datos2);
@@ -278,13 +216,10 @@ include_once("../../model/connection.php");
     
 <div class="container">
     <h2>Home</h2>
-    <div id="canvas-container" style="width:20%;">
+    <div id="canvas-container" style="width:30%;">
         <canvas id="chart" width="200" height="150"></canvas>
     </div>
 
-    <div id="canvas-container" style="width:20%;">
-        <canvas id="chart1" width="200" height="150"></canvas>
-    </div>
     <div id="canvas-container" style="width:30%;">
         <canvas id="chart2" width="200" height="150"></canvas>
     </div>

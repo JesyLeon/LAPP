@@ -29,30 +29,21 @@ include_once("../../model/connection.php");
     $(document).ready(function(){
         //SENTENCIA SQL
             <?php
-                $sql="SELECT t_loca, count(t_loca) as loca from racks group by t_loca";
+                $sql="SELECT * FROM vista_gral ";
                 $result=mysqli_query($conexion, $sql);
             ?>
-
+         
         //GUARDAR LOS REGISTROS
-            var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["loca"] ?>,
+            var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["A"] ?>,<?php echo $registros["B"] ?>,<?php echo $registros["C"]?>,
+            <?php echo $registros["D"]?>,<?php echo $registros["E"]?>,<?php echo $registros["F"]?>,<?php echo $registros["G"]?>,<?php echo $registros["H"]?>,<?php echo $registros["I"]?>,<?php echo $registros["J"]?>,<?php echo $registros["K"]?>,<?php echo $registros["L"]?>,<?php echo $registros["M"]?>,<?php echo $registros["N"]?>,<?php echo $registros["O"]?>,<?php echo $registros["P"]?>,<?php echo $registros["Q"]?>,<?php echo $registros["R"]?>,<?php echo $registros["S"]?>,<?php echo $registros["T"]?>,<?php echo $registros["U"]?>,<?php echo $registros["V"]?>,<?php echo $registros["W"]?>,<?php echo $registros["X"]?>,<?php echo $registros["Y"]?>,<?php echo $registros["Z"]?>,
                     <?php }?>];
+       
         //RETORNAR COLOR DEPENDIENDO DE LOS VALORES GUARDADOS EN dtos
-            const colours = dtos.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
-
-
+            const colours = dtos.map((value) =>  {if (value > 1000) return 'red'; else if (value < 1000) return 'yellow'; else return 'green';});
             var datos={//DATOS A MOSTRAR EN EL CHART
                  //LABELS EN EJE X
                 labels:[
-                    <?php
-                        $sql="SELECT t_loca FROM racks group by t_loca";
-                        $result= mysqli_query($conexion,$sql);
-                        while($registros=mysqli_fetch_array($result))
-                        {
-                          ?>
-                        '<?php echo $registros["t_loca"]?>',
-                        <?php
-                        }
-                    ?>
+                    'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
                 ],
 
                 datasets:[{//DATOS QUE MUESTRAN LAS CANTIDADES DE LA COLUMNA

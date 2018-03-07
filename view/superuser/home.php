@@ -92,7 +92,7 @@ include_once("../../model/connection.php");
                     responsive: true,
                     title:{
                         display:true,
-                        text: "CRUD",
+                        text: "WAREHOUSE STATUS",
                     }
                 }
             };
@@ -168,7 +168,7 @@ include_once("../../model/connection.php");
                     responsive: true,
                     title:{
                         display:true,
-                        text: "Warehouse status"
+                        text: "RACKS STATUS"
                     }
                 }
             });  

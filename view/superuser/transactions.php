@@ -7,7 +7,7 @@ include("../../model/conn_sql.php");
 
 /*Select count HU withoutlocation*/
 
-		/*$sql = "SELECT COUNT(*) FROM withoutlocation";
+	/*	$sql = "SELECT COUNT(*) FROM withoutlocation";
 		$result = $conexion->query($sql);
 
 		while($row= $result->fetch_assoc()){
@@ -28,7 +28,7 @@ include("../../model/conn_sql.php");
 			echo $count;*/
 
 		/*INSERCIÓN DE DATOS A TABLA CON LOCACIÓN */
-		/*$hu_withlocation = "INSERT INTO hu_withlocation values ('$count')";
+	/*	$hu_withlocation = "INSERT INTO hu_withlocation values ('$count')";
 		$result = mysqli_query($conexion,$hu_withlocation)
 		or die ("Error al insertar los registros");
 

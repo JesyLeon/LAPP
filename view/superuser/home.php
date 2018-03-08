@@ -48,7 +48,7 @@ include_once("../../model/connection.php");
                 ],
 
                 datasets:[{//DATOS QUE MUESTRAN LAS CANTIDADES DE LA COLUMNA
-                   label: "racks",
+                   label: " ",
                     //LOS DATOS SERAN IGUALES A LA VARIABLE dtos
                     data: dtos,
                     //El color será igual a lo que retorne colours
@@ -56,6 +56,21 @@ include_once("../../model/connection.php");
                     //backgroundColor: ['blue','red','yellow'],
                     borderWidth: 1,   
                                    
+                }
+                ,
+                {
+                    label: 'FULL',
+                    backgroundColor: 'green',
+                }
+                ,
+                {
+                    label: 'EMPTY',
+                    backgroundColor: 'yellow',
+                }
+                ,
+                {
+                    label: 'OVER',
+                    backgroundColor: 'red',
                 }],
                
             };
@@ -170,6 +185,14 @@ include_once("../../model/connection.php");
                         display:true,
                         text: "RACKS STATUS"
                     }
+                    ,
+                    legend: {
+                        labels: {
+                        filter: function(label) {
+                        if (label.text === 'FULL' || label.text === 'OVER' || label.text === 'EMPTY') return true;
+                        }
+                    }
+                    },
                 }
             });  
              //PROPIEDADES DEL CHART2

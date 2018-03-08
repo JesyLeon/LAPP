@@ -97,6 +97,9 @@ include_once("../../model/connection.php");
                          labelString: "STATUS PER RACKS"
                       
                                  }
+                             }],
+                             xAxes: [{
+                            barThickness : 25,
                              }]
                     },
                     elements: {

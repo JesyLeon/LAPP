@@ -30,14 +30,14 @@ include_once("../../model/connection.php");
     $(document).ready(function(){
         //GRAFICA 1
             <?php
-                $sql="SELECT * FROM vista_gral ";
+                $sql="SELECT * FROM vista_gral ";//aqui hace la seleccion de la ista general para extraer los datos
                 $result=mysqli_query($conexion, $sql);
             ?>
          
         //GUARDAR LOS REGISTROS
             var dtos = [<?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["A"] ?>,<?php echo $registros["B"] ?>,<?php echo $registros["C"]?>,
             <?php echo $registros["D"]?>,<?php echo $registros["E"]?>,<?php echo $registros["F"]?>,<?php echo $registros["G"]?>,<?php echo $registros["H"]?>,<?php echo $registros["I"]?>,<?php echo $registros["J"]?>,<?php echo $registros["K"]?>,<?php echo $registros["L"]?>,<?php echo $registros["M"]?>,<?php echo $registros["N"]?>,<?php echo $registros["O"]?>,<?php echo $registros["P"]?>,<?php echo $registros["Q"]?>,<?php echo $registros["R"]?>,<?php echo $registros["S"]?>,<?php echo $registros["T"]?>,<?php echo $registros["U"]?>,<?php echo $registros["V"]?>,<?php echo $registros["W"]?>,<?php echo $registros["X"]?>,<?php echo $registros["Y"]?>,<?php echo $registros["Z"]?>,
-                    <?php }?>];
+                    <?php }?>];//aqui asignas a cada columna el valor total de los contadores, en el caso de turno seria 1,2,3
        
         //RETORNAR COLOR DEPENDIENDO DE LOS VALORES GUARDADOS EN dtos
             const colours = dtos.map((value) =>  {if (value > 1000) return 'red'; else if (value < 1000) return 'yellow'; else return 'green';});
@@ -171,6 +171,10 @@ include_once("../../model/connection.php");
                                ticks: {
                                 beginAtZero: true,                           
                                           }
+                             }]
+                             ,
+                             xAxes: [{
+                            barThickness : 10,
                              }]
                     },
                     elements: {

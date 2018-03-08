@@ -7,7 +7,8 @@
 		/*First Turno*/
 		$sfirstini = date("Y-m-d 13:00:001");
 		$sfirstfin = date("Y-m-d 21:00:000");
-		$today = date("Y/m/d H:m:s",time()-25200);
+		$today = date("Y/m/d",time()-25200);
+		
 		//echo $yester;
 		echo "<br>";
 		echo $sfirstini;
@@ -17,42 +18,62 @@
 		echo $today;
 		echo "<br>";
 		echo "<br>";
-		
-		$sql = "SELECT COUNT(t_huid) as hu
-		FROM twhwmd530630
-		WHERE t_hust='9'
-		and t_idat<'$sfirstini'  
-		and t_idat>'$sfirstfin' 
-		and t_loca ='0000'";
-         
-		$consulta = sqlsrv_query($con,$sql);
-		$Row=sqlsrv_fetch_array($consulta);
-		echo ($Row);
-		echo ($Row);
-		echo $consulta[1];
-		while($Row=sqlsrv_fetch_array($consulta))
-		{
 
-			//MYSLQ
-			include 'connection.php';
-			
-			//$wo_loca  = $Row['t_loca'];
-			$n_hu= $Row['hu'];
+		/*SEGUNDO TURNO PORTUGAL
+		$sql = "SELECT COUNT(t_huid) AS hu
+				FROM twhwmd530630
+				WHERE t_hust ='9'
+				AND t_loca='0000'
+				AND t_idat< '2018-03-06 21:00:000'
+				AND t_idat> '2018-03-06 13:00:001'";
 
-			//echo $wo_loca;
-			echo $n_hu;
-			/*echo '<table>';
-			echo '<tr>';
-			echo '<td>'.$wo_loca.'<td/>'.
-				 '<td>'.$n_hu.'<td/>';
-			echo '</tr>';
-			echo '</table>';*/
+		TERCERO TURNO PORTUGAL
+		$sql = "SELECT COUNT(t_huid) AS hu
+				FROM twhwmd530630
+				WHERE t_hust ='9'
+				AND t_loca='0000'
+				AND t_idat< '2018-03-07 04:30:000'
+				AND t_idat> '2018-03-06 21:00:001'";
 
-			/*$withoutlocation = "INSERT INTO withoutlocation values ('$today', '$wo_loca', '$n_hu')";
+		PRIMER TURNO PORTUGAL
+		$sql = "SELECT COUNT(t_huid) AS hu
+				FROM twhwmd530630
+				WHERE t_hust ='9'
+				AND t_loca='0000'
+				AND t_idat< '2018-03-06 13:00:000'
+				AND t_idat> '2018-03-06 04:30:001'";
+		*/
+
+		$sql = "SELECT COUNT(t_huid) AS hu
+				FROM twhwmd530630
+				WHERE t_hust ='9'
+				AND t_loca='0000'
+				AND t_idat< '2018-03-07 04:30:000'
+				AND t_idat> '2018-03-06 21:00:001'";
+
+		$stmt = sqlsrv_query( $con, $sql );
+
+		if( $stmt === false) {
+    		die( print_r( sqlsrv_errors(), true) );
+		}
+
+		while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+	  		$id_shift = 3;
+	  		$n_hu = $row['hu']."<br />";
+	  		echo $n_hu;
+	  //MYSLQ
+
+		include 'connection.php';
+	  		$withoutlocation = "INSERT INTO withoutlocation (t_vrdt, id_shift, num_woloca) values ('$today', '$id_shift', '$n_hu')";
 			$result = mysqli_query($conexion,$withoutlocation)
 			or die ("Error al insertar los registros");
 			
-			mysqli_close($conexion);*/
-		} 
+			mysqli_close($conexion);
+}
 
+sqlsrv_free_stmt( $stmt);
 ?>
+
+         
+		
+		

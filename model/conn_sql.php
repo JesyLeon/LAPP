@@ -12,6 +12,6 @@
 	else
 	{
 		echo "Fail Connection";
-    }
-    
+	}
+	
 ?>

@@ -11,36 +11,64 @@
 		echo $datetime;
 		echo "<br>";
 		echo $today;
+		echo "<br>";
+		echo "<br>";
 
-		$sql = "SELECT COUNT(t_huid)
-		FROM twhwmd530630 
-		WHERE t_hust='9'
-		and t_idat<'$today' 
-		and t_idat>'$yester' 
-		and t_loca <>'0000'
-		and t_cwar='DHBFG1'";
+		/*SEGUNDO TURNO PORTUGAL
+		$sql = "SELECT COUNT(t_huid) AS hu
+				FROM twhwmd530630 
+				WHERE t_hust='9'
+				AND t_idat< '2018-03-06 21:00:000'
+				AND t_idat> '2018-03-06 13:00:001'
+				AND t_loca<>'0000'
+				AND t_cwar='DHBFG1'";
 
-		$consulta = sqlsrv_query($con,$sql);
+		TERCERO TURNO PORTUGAL
+		$sql = "SELECT COUNT(t_huid) AS hu
+				FROM twhwmd530630 
+				WHERE t_hust='9'
+				AND t_idat< '2018-03-07 04:30:000'
+				AND t_idat> '2018-03-06 21:00:001'
+				AND t_loca<>'0000'
+				AND t_cwar='DHBFG1'";
 
-		while($Row=sqlsrv_fetch_array($consulta))
-		{
+		PRIMER TURNO PORTUGAL
+		SELECT COUNT(t_huid) AS hu
+				FROM twhwmd530630 
+				WHERE t_hust='9'
+				AND t_idat< '2018-03-06 21:00:000'
+				AND t_idat> '2018-03-06 13:00:001'
+				AND t_loca<>'0000'
+				AND t_cwar='DHBFG1'";
+		*/
 
-			//MYSLQ
-			include 'connection.php';
+		$sql = "SELECT COUNT(t_huid) AS hu
+				FROM twhwmd530630 
+				WHERE t_hust='9'
+				AND t_idat< '2018-03-07 04:30:000'
+				AND t_idat> '2018-03-06 21:00:001'
+				AND t_loca<>'0000'
+				AND t_cwar='DHBFG1'";
 
-			$n_hu = $Row[COUNT('t_huid')];
-			echo '<table>';
-			echo '<tr>';
-			echo '<td>'.$n_hu.'<td/>';
-			echo '</tr>';
-			echo '</table>';
+$stmt = sqlsrv_query( $con, $sql );
+if( $stmt === false) {
+    die( print_r( sqlsrv_errors(), true) );
+}
 
-			/*INSERCIÓN DE DATOS A TABLA CON LOCACIÓN */
-			/*$withlocation = "INSERT INTO withlocation values ('$today', '$n_hu')";
+while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+	  $id_shift = 3;
+	  $n_hu = $row['hu']."<br />";
+	  echo $n_hu;
+	  //MYSLQ
+
+	  include 'connection.php';
+	  $withlocation = "INSERT INTO withlocation (t_vrdt, id_shift, num_loca) values ('$today', $id_shift, '$n_hu')";
 			$result = mysqli_query($conexion,$withlocation)
 			or die ("Error al insertar los registros");
 			
-			mysqli_close($conexion);*/
-		}
+			mysqli_close($conexion);
+}
+
+sqlsrv_free_stmt( $stmt);
 
 ?>

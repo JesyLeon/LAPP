@@ -5,6 +5,36 @@ include("../../controller/security.php");
 
 include("../../model/conn_sql.php");
 
+/*Select count HU withoutlocation*/
+
+	/*	$sql = "SELECT COUNT(*) FROM withoutlocation";
+		$result = $conexion->query($sql);
+
+		while($row= $result->fetch_assoc()){
+			$count = $row['COUNT(*)'];
+			echo "Spools without locacion";
+			echo $count;
+		}*/
+
+		
+
+		/*Select count HU withlocation*/
+		/*$sql = "SELECT COUNT(*) FROM withlocation";
+		$result = $conexion->query($sql);
+
+		while($row= $result->fetch_assoc()){
+			$count = $row['COUNT(*)'];
+			echo "Spools with locacion";
+			echo $count;*/
+
+		/*INSERCIÓN DE DATOS A TABLA CON LOCACIÓN */
+	/*	$hu_withlocation = "INSERT INTO hu_withlocation values ('$count')";
+		$result = mysqli_query($conexion,$hu_withlocation)
+		or die ("Error al insertar los registros");
+
+		mysqli_close($conexion);
+	}*/
+
 if($id_type_user != 1){
     header("location: ../../login.php");
     exit();
@@ -20,13 +50,8 @@ if($id_type_user != 1){
 		}
 	}
 
-	
-	$table="SELECT shift.shift, withoutlocation.num_woloca AS WO, withlocation.num_loca AS W, withlocation.t_vrdt 
-			FROM withoutlocation, withlocation, shift 
-			WHERE withoutlocation.t_vrdt = withlocation.t_vrdt 
-			AND withoutlocation.id_shift = shift.id_shift 
-			AND withlocation.id_shift = shift.id_shift";
-	
+	//$table="SELECT id_trans, shift_trans, num_spol, num_trans, date_trans FROM transactions, without_location WHERE date_trans = date_validation and shift_trans = shift_validation";
+	$table="SELECT withlocation.id_shift, num_woloca, num_loca, withlocation.t_vrdt FROM withoutlocation, withlocation";
 	$result = $conexion->query($table);
 	
 	/*if(isset($_POST['filter'])){
@@ -132,9 +157,10 @@ if($id_type_user != 1){
           while($row= $result->fetch_assoc()){
 					?>
 					<tr>
-						<td><?php echo $row['shift']; ?></td>
-						<td><?php echo $row['WO']; ?></td>
-						<td><?php echo $row['W']; ?></td>
+						<!--<td><php echo $row['id_salida']; ?></td>-->
+						<td><?php echo $row['id_shift']; ?></td>
+						<td><?php echo $row['num_woloca']; ?></td>
+						<td><?php echo $row['num_loca']; ?></td>
 						<td><?php echo $row['t_vrdt']; ?></td>
 					</tr>
           <?php
@@ -143,18 +169,26 @@ if($id_type_user != 1){
       </tbody>
     </table>
     <br>
+       <!--Button for print the excel report-->
+    <!--<button type="button" class="btn btn-success">Print</button>
+
+   <script> 
+    $(document).on('click', '.btn', function(){
+   alert("Excel file");//prueba
+    });
+   </script>-->
 
    <div class="botones">
-				<!--<div id="izquierda">
+				<div id="izquierda">
 					<form action="../../../controlador/admin/reportes/concepto_entregas/concepto_entregas_general.php" method="post" id="insert_form" accept-charset="utf-8">
 						<input type="submit" name="reporte_general" id="insert" value="Report General" class="btn btn-success">
 					</form>
-				</div>-->
+				</div>
 				<div id="centrado">
 					<a class='btn btn-success' value="report_month" data-toggle="modal" href="#Reporte_Mensual">Report for Month <!--<span class="fa fa-file-excel-o"></span>--></a>
 				</div>
 				<div id="derecha">
-					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Report for day <!--<span class="fa fa-file-excel-o"></span>--></a>
+					<a class='btn btn-success' value="reporte" data-toggle="modal" href="#Reporte_Diario">Report of day <!--<span class="fa fa-file-excel-o"></span>--></a>
 				</div>							
 			</div><br>
 

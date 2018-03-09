@@ -197,6 +197,7 @@
 				AND t_loca<>'0000'
 				AND t_cwar='DHBFG1'";
 
+
 $stmt = sqlsrv_query( $con, $sql );
 if( $stmt === false) {
     die( print_r( sqlsrv_errors(), true) );
@@ -209,7 +210,7 @@ while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
 	  //MYSLQ
 
 	  include 'connection.php';
-	  $withlocation = "INSERT INTO withlocation (t_vrdt, id_shift, num_loca) values ('$today', $id_shift, '$n_hu')";
+	  $withlocation = "INSERT INTO withlocation (t_vrdt, id_shift, num_loca) values ('2018/03/07', $id_shift, '$n_hu')";
 			$result = mysqli_query($conexion,$withlocation)
 			or die ("Error al insertar los registros");
 			

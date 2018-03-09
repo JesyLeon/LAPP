@@ -54,6 +54,20 @@ include_once("../../model/connection.php");
                     backgroundColor: colours,
                     borderWidth: 1,   
                                    
+                },
+                {
+                    label: 'FULL',
+                    backgroundColor: 'green',
+                }
+                ,
+                {
+                    label: 'EMPTY',
+                    backgroundColor: 'yellow',
+                }
+                ,
+                {
+                    label: 'OVER',
+                    backgroundColor: 'red',
                 }],
                
             };
@@ -64,6 +78,15 @@ include_once("../../model/connection.php");
                 type:"bar",
                 data:datos,
                 options:{
+
+                    legend: {
+                        labels: {
+                        filter: function(label) {
+                        if (label.text === 'FULL' || label.text === 'OVER' || label.text === 'EMPTY') return true;
+                        }
+                    }
+                    },
+                    
                     scales: {
                           yAxes: [{
                                ticks: {
@@ -74,6 +97,9 @@ include_once("../../model/connection.php");
                          labelString: "STATUS PER RACKS"
                       
                                  }
+                             }],
+                             xAxes: [{
+                            barThickness : 25,
                              }]
                     },
                     elements: {
@@ -84,7 +110,8 @@ include_once("../../model/connection.php");
                         }
                     },
                     responsive: true,
-                }
+                },
+                
             });  
         
     });

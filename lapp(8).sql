@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2018 at 04:34 PM
+-- Generation Time: Mar 09, 2018 at 01:48 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -10078,6 +10078,28 @@ INSERT INTO `racks` (`t_huid`, `t_vrdt`, `t_hust`, `t_cwar`, `t_loca`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shift`
+--
+
+CREATE TABLE `shift` (
+  `id_shift` int(11) NOT NULL,
+  `shift` int(11) NOT NULL,
+  `time_start` time NOT NULL,
+  `time_finish` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shift`
+--
+
+INSERT INTO `shift` (`id_shift`, `shift`, `time_start`, `time_finish`) VALUES
+(1, 1, '04:00:01', '13:00:00'),
+(2, 2, '13:00:01', '21:30:00'),
+(3, 3, '21:30:01', '04:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transactions`
 --
 
@@ -11090,18 +11112,41 @@ CREATE TABLE `vista_reporte` (
 --
 
 CREATE TABLE `withlocation` (
-  `t_vrdt` varchar(150) NOT NULL,
-  `num_loca` int(11) NOT NULL,
   `id_loca` int(11) NOT NULL,
-  `shift` int(11) NOT NULL
+  `id_shift` int(11) NOT NULL,
+  `t_vrdt` varchar(150) NOT NULL,
+  `num_loca` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `withlocation`
 --
 
-INSERT INTO `withlocation` (`t_vrdt`, `num_loca`, `id_loca`, `shift`) VALUES
-('2018/03/07', 989, 1, 1);
+INSERT INTO `withlocation` (`id_loca`, `id_shift`, `t_vrdt`, `num_loca`) VALUES
+(2, 1, '2018/03/08', 224),
+(4, 2, '2018/03/08', 199),
+(5, 3, '2018/03/08', 0),
+(6, 1, '2018/03/01', 105),
+(7, 2, '2018/03/01', 77),
+(8, 3, '2018/03/01', 284),
+(9, 1, '2018/03/02', 140),
+(10, 2, '2018/03/02', 70),
+(11, 3, '2018/03/02', 284),
+(12, 1, '2018/03/03', 211),
+(13, 2, '2018/03/03', 293),
+(16, 3, '2018/03/03', 120),
+(17, 1, '2018/03/04', 203),
+(18, 2, '2018/03/04', 208),
+(20, 3, '2018/03/04', 38),
+(22, 1, '2018/03/05', 453),
+(23, 2, '2018/03/05', 293),
+(25, 3, '2018/03/05', 264),
+(26, 1, '2018/03/06', 285),
+(27, 2, '2018/03/06', 293),
+(28, 3, '2018/03/06', 280),
+(31, 1, '2018/03/07', 266),
+(32, 2, '2018/03/07', 242),
+(33, 3, '2018/03/07', 280);
 
 -- --------------------------------------------------------
 
@@ -11110,19 +11155,24 @@ INSERT INTO `withlocation` (`t_vrdt`, `num_loca`, `id_loca`, `shift`) VALUES
 --
 
 CREATE TABLE `withoutlocation` (
-  `t_vrdt` varchar(150) NOT NULL,
-  `t_loca` varchar(10) NOT NULL,
-  `num_woloca` int(11) NOT NULL,
   `id_woloca` int(11) NOT NULL,
-  `shift` int(11) NOT NULL
+  `id_shift` int(11) NOT NULL,
+  `t_vrdt` varchar(150) NOT NULL,
+  `num_woloca` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `withoutlocation`
 --
 
-INSERT INTO `withoutlocation` (`t_vrdt`, `t_loca`, `num_woloca`, `id_woloca`, `shift`) VALUES
-('2018/03/07', '0000', 383, 1, 1);
+INSERT INTO `withoutlocation` (`id_woloca`, `id_shift`, `t_vrdt`, `num_woloca`) VALUES
+(1, 1, '2018/03/06', 16),
+(2, 2, '2018/03/06', 78),
+(3, 3, '2018/03/06', 17),
+(4, 3, '2018/03/08', 17),
+(5, 3, '2018/03/08', 17),
+(6, 3, '2018/03/08', 118),
+(7, 2018, '2018/03/08', 117);
 
 -- --------------------------------------------------------
 
@@ -11424,6 +11474,12 @@ ALTER TABLE `racks`
   ADD PRIMARY KEY (`t_huid`);
 
 --
+-- Indexes for table `shift`
+--
+ALTER TABLE `shift`
+  ADD PRIMARY KEY (`id_shift`);
+
+--
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -11453,13 +11509,13 @@ ALTER TABLE `users`
 -- Indexes for table `withlocation`
 --
 ALTER TABLE `withlocation`
-  ADD PRIMARY KEY (`t_vrdt`);
+  ADD PRIMARY KEY (`id_loca`);
 
 --
 -- Indexes for table `withoutlocation`
 --
 ALTER TABLE `withoutlocation`
-  ADD PRIMARY KEY (`t_vrdt`);
+  ADD PRIMARY KEY (`id_woloca`);
 
 --
 -- Indexes for table `without_location`
@@ -11470,6 +11526,12 @@ ALTER TABLE `without_location`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `shift`
+--
+ALTER TABLE `shift`
+  MODIFY `id_shift` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transactions`
@@ -11488,6 +11550,18 @@ ALTER TABLE `type_user`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `withlocation`
+--
+ALTER TABLE `withlocation`
+  MODIFY `id_loca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `withoutlocation`
+--
+ALTER TABLE `withoutlocation`
+  MODIFY `id_woloca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `without_location`

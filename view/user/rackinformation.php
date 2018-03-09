@@ -2,7 +2,7 @@
     include("../../model/connection.php");
     include("../../controller/security.php");
     
-    if($id_type_user != 1){
+    if($id_type_user != 2){
         header("location: ../../login.php");
         exit();
     }

@@ -17,7 +17,11 @@
 		}
 	}
 
-	$table="SELECT id_trans, shift_trans, num_spol, num_trans, date_trans FROM transactions, without_location WHERE date_trans = date_validation and shift_trans = shift_validation";
+	$table="SELECT shift.shift, withoutlocation.num_woloca AS WO, withlocation.num_loca AS W, withlocation.t_vrdt 
+			FROM withoutlocation, withlocation, shift 
+			WHERE withoutlocation.t_vrdt = withlocation.t_vrdt 
+			AND withoutlocation.id_shift = shift.id_shift 
+			AND withlocation.id_shift = shift.id_shift";
 	$result = $conexion->query($table);
 	
   
@@ -117,11 +121,10 @@
           while($row= $result->fetch_assoc()){
 					?>
 					<tr>
-						<!--<td><php echo $row['id_salida']; ?></td>-->
-						<td><?php echo $row['shift_trans']; ?></td>
-						<td><?php echo $row['num_spol']; ?></td>
-						<td><?php echo $row['num_trans']; ?></td>
-						<td><?php echo $row['date_trans']; ?></td>
+						<td><?php echo $row['shift']; ?></td>
+						<td><?php echo $row['WO']; ?></td>
+						<td><?php echo $row['W']; ?></td>
+						<td><?php echo $row['t_vrdt']; ?></td>
 					</tr>
           <?php
           }

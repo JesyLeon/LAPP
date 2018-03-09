@@ -13,14 +13,20 @@
 		$salida = fopen('php://output', 'w');
 
 		//Encabezados
-		fputcsv($salida, array('Shift', 'No. Transactions', 'Date'));
+		fputcsv($salida, array('Shift', 'No. Spools Without Location', 'No. Transactions', 'Date'));
 
 		//Query para crear el reporte
-		$reporte = $conexion->query("SELECT shift, num_trans, date_trans FROM transactions WHERE date_trans BETWEEN '$fecha_inicio' AND '$fecha_termino' ");
+		$reporte = $conexion->query("SELECT shift.shift, withoutlocation.num_woloca AS WO, withlocation.num_loca AS W, withlocation.t_vrdt AS t_vrdt
+									 FROM withoutlocation, withlocation, shift 
+									 WHERE withoutlocation.t_vrdt = withlocation.t_vrdt 
+									 AND withoutlocation.id_shift = shift.id_shift 
+									 AND withlocation.id_shift = shift.id_shift 
+									 AND withlocation.t_vrdt BETWEEN '$fecha_inicio' AND '$fecha_termino' ");
 		while($fila = $reporte->fetch_assoc())
 			fputcsv($salida, array ($fila['shift'], 
-									$fila['num_trans'],
-									$fila['date_trans']
+									$fila['WO'],
+									$fila['W'],
+									$fila['t_vrdt']
                                 ));
 	}               
 

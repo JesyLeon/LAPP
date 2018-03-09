@@ -57,13 +57,13 @@ if( $stmt === false) {
 }
 
 while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-	  $id_shift = 1;
+	  $id_shift = 3;
 	  $n_hu = $row['hu']."<br />";
 	  echo $n_hu;
 	  //MYSLQ
 
 	  include 'connection.php';
-	  $withlocation = "INSERT INTO withlocation (t_vrdt, id_shift, num_loca) values ('$today', $id_shift, '$n_hu')";
+	  $withlocation = "INSERT INTO withlocation (t_vrdt, id_shift, num_loca) values ('2018/03/07', $id_shift, '$n_hu')";
 			$result = mysqli_query($conexion,$withlocation)
 			or die ("Error al insertar los registros");
 			

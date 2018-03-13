@@ -114,12 +114,12 @@ include_once("../../model/connection.php");
 
              //GRAFICA 4
              <?php
-                $sql2="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";;
+                $sql2="SELECT withlocation.id_shift,withoutlocation.id_shift, SUM(withlocation.num_loca) as suma,SUM(withoutlocation.num_woloca) as su FROM `withlocation`,`withoutlocation` GROUP by withoutlocation.id_shift AND withlocation.id_shift";;
                 $result2=mysqli_query($conexion, $sql2);
             ?>
-            var dt = [<?php while ($registros2=mysqli_fetch_array($result2)){?><?php echo $registros2["suma"] ?>,
+            var dt = [<?php while ($registros2=mysqli_fetch_array($result2)){?><?php echo $registros2["suma"] ?>,<?php echo $registros2["su"] ?>,
                     <?php }?>];
-            const col = dt.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
+            const col = dt.map((value) =>  {if (value > 300) return 'red'; else if (value < 300) return 'yellow'; else return 'green';});
              var datos3= {
                 type:"line",
                 data:{
@@ -131,20 +131,20 @@ include_once("../../model/connection.php");
                     pointBorderColor: col,
                     pointBorderWidth: 6,
                    data:<?php
-                        $sql="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";
+                        $sql="SELECT withlocation.id_shift,withoutlocation.id_shift, SUM(withlocation.num_loca) as suma,SUM(withoutlocation.num_woloca) as su FROM `withlocation`,`withoutlocation` GROUP by withoutlocation.id_shift AND withlocation.id_shift";
                         $result=mysqli_query($conexion, $sql);
                         ?>
-                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["suma"] ?>,
+                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["suma"] ?>,<?php echo $registros["su"] ?>,
                     <?php }?>]  
                 }],
                 labels:[
                     <?php
-                        $sql="SELECT shift_trans, num_trans FROM transactions GROUP BY shift_trans";
+                        $sql="SELECT id_shift FROM `withlocation` GROUP BY id_shift ";
                         $result= mysqli_query($conexion,$sql);
                         while($registros=mysqli_fetch_array($result))
                         {
                           ?>
-                        '<?php echo $registros["shift_trans"]?>',
+                        '<?php echo $registros["id_shift"]?>',
                         <?php
                         }
                     ?>

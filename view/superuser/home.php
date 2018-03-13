@@ -83,7 +83,7 @@ include_once("../../model/connection.php");
                 $sql1="SELECT * FROM vista_gral";
                 $result1=mysqli_query($conexion, $sql1);
             ?>
-            var dto = [<?php while ($registros1=mysqli_fetch_array($result1)){?><?php echo $registros1["A"] ?>,<?php echo $registros1["B"] ?>,<?php echo $registros1["G"] ?>,
+            var dto = [<?php while ($registros1=mysqli_fetch_array($result1)){?><?php echo $registros1["A"] ?>,<?php echo $registros1["B"] ?>,
                     <?php }?>];
             const colour = dto.map((value) =>  {if (value > 1000) return 'red'; else if (value < 1000) return 'yellow'; else return 'green';});
             var datos2= {
@@ -95,7 +95,7 @@ include_once("../../model/connection.php");
                         $sql="SELECT * FROM vista_gral";
                         $result=mysqli_query($conexion, $sql);
                         ?>
-                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["A"] ?>,<?php echo $registros["B"] ?>,<?php echo $registros["G"] ?>,
+                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["A"] ?>,<?php echo $registros["B"] ?>,
                     <?php }?>]  
                 }],
                 labels:[

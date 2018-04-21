@@ -83,7 +83,7 @@ include_once("../../model/connection.php");
                 $sql1="SELECT * FROM vista_gral";
                 $result1=mysqli_query($conexion, $sql1);
             ?>
-            var dto = [<?php while ($registros1=mysqli_fetch_array($result1)){?><?php echo $registros1["A"] ?>,<?php echo $registros1["B"] ?>,<?php echo $registros1["G"] ?>,
+            var dto = [<?php while ($registros1=mysqli_fetch_array($result1)){?><?php echo $registros1["A"] ?>,<?php echo $registros1["B"] ?>,
                     <?php }?>];
             const colour = dto.map((value) =>  {if (value > 1000) return 'red'; else if (value < 1000) return 'yellow'; else return 'green';});
             var datos2= {
@@ -95,7 +95,7 @@ include_once("../../model/connection.php");
                         $sql="SELECT * FROM vista_gral";
                         $result=mysqli_query($conexion, $sql);
                         ?>
-                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["A"] ?>,<?php echo $registros["B"] ?>,<?php echo $registros["G"] ?>,
+                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["A"] ?>,<?php echo $registros["B"] ?>,
                     <?php }?>]  
                 }],
                 labels:[
@@ -114,12 +114,12 @@ include_once("../../model/connection.php");
 
              //GRAFICA 4
              <?php
-                $sql2="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";;
+                $sql2="SELECT shift,SUM(`withoutlocation`) as suma,SUM(`withlocation`) as su FROM `transactios` GROUP BY `shift`";;
                 $result2=mysqli_query($conexion, $sql2);
             ?>
-            var dt = [<?php while ($registros2=mysqli_fetch_array($result2)){?><?php echo $registros2["suma"] ?>,
+            var dt = [<?php while ($registros2=mysqli_fetch_array($result2)){?><?php echo $registros2["suma"] ?>,<?php echo $registros2["su"] ?>,
                     <?php }?>];
-            const col = dt.map((value) =>  {if (value > 6) return 'red'; else if (value < 6) return 'yellow'; else return 'green';});
+            const col = dt.map((value) =>  {if (value > 500) return 'red'; else if (value < 1000) return 'yellow'; else return 'green';});
              var datos3= {
                 type:"line",
                 data:{
@@ -131,20 +131,20 @@ include_once("../../model/connection.php");
                     pointBorderColor: col,
                     pointBorderWidth: 6,
                    data:<?php
-                        $sql="SELECT shift_trans,SUM(`num_trans`) as suma FROM `transactions` GROUP BY `shift_trans`";
+                        $sql="SELECT shift,SUM(`withoutlocation`) as suma,SUM(`withlocation`) as su FROM `transactios` GROUP BY `shift`";
                         $result=mysqli_query($conexion, $sql);
                         ?>
-                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["suma"] ?>,
+                       [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["suma"] ?>,<?php echo $registros["su"] ?>,
                     <?php }?>]  
                 }],
                 labels:[
                     <?php
-                        $sql="SELECT shift_trans, num_trans FROM transactions GROUP BY shift_trans";
+                        $sql="SELECT shift FROM transactios GROUP BY shift";
                         $result= mysqli_query($conexion,$sql);
                         while($registros=mysqli_fetch_array($result))
                         {
                           ?>
-                        '<?php echo $registros["shift_trans"]?>',
+                        '<?php echo $registros["shift"]?>',
                         <?php
                         }
                     ?>

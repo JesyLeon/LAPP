@@ -21,11 +21,14 @@ if($id_type_user != 1){
 	}
 
 	
-	$table="SELECT shift.shift, withoutlocation.num_woloca AS WO, withlocation.num_loca AS W, withlocation.t_vrdt 
+	/*$table="SELECT shift.shift, withoutlocation.num_woloca AS WO, withlocation.num_loca AS W, withlocation.t_vrdt 
 			FROM withoutlocation, withlocation, shift 
 			WHERE withoutlocation.t_vrdt = withlocation.t_vrdt 
 			AND withoutlocation.id_shift = shift.id_shift 
-			AND withlocation.id_shift = shift.id_shift";
+			AND withlocation.id_shift = shift.id_shift
+			ORDER By withoutlocation.t_vrdt = withlocation.t_vrdt ASC";*/
+
+			$table="SELECT id_shift, wol, wl, t_vrdt FROM transactions ORDER BY t_vrdt DESC";
 	
 	$result = $conexion->query($table);
 	
@@ -69,7 +72,7 @@ if($id_type_user != 1){
   <script>
   		$(document).ready(function() {
   			$('#myTable').DataTable({
-  				"order":[[2, "desc"]],
+  				"order":[[3, "desc"]],
   				"language":{
   				  "lengthMenu": "Show _MENU_ records per page",
   			  	"info": "Showing page _PAGE_ of _PAGES_",
@@ -132,10 +135,12 @@ if($id_type_user != 1){
           while($row= $result->fetch_assoc()){
 					?>
 					<tr>
-						<td><?php echo $row['shift']; ?></td>
-						<td><?php echo $row['WO']; ?></td>
-						<td><?php echo $row['W']; ?></td>
+						<td><?php echo $row['id_shift']; ?></td>
+						<td><?php echo $row['wol']; ?></td>
+						<td><?php echo $row['wl']; ?></td>
 						<td><?php echo $row['t_vrdt']; ?></td>
+
+						
 					</tr>
           <?php
           }

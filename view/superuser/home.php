@@ -114,12 +114,20 @@ include_once("../../model/connection.php");
 
              //GRAFICA 4
              <?php
+<<<<<<< HEAD
                 $sql2="SELECT shift,SUM(`withoutlocation`) as suma,SUM(`withlocation`) as su FROM `transactios` GROUP BY `shift`";;
+=======
+                $sql2="SELECT withlocation.id_shift,withoutlocation.id_shift, SUM(withlocation.num_loca) as suma,SUM(withoutlocation.num_woloca) as su FROM `withlocation`,`withoutlocation` GROUP by withoutlocation.id_shift AND withlocation.id_shift";;
+>>>>>>> 09f4663b872e2251498d72969b3214cce6264d50
                 $result2=mysqli_query($conexion, $sql2);
             ?>
             var dt = [<?php while ($registros2=mysqli_fetch_array($result2)){?><?php echo $registros2["suma"] ?>,<?php echo $registros2["su"] ?>,
                     <?php }?>];
+<<<<<<< HEAD
             const col = dt.map((value) =>  {if (value > 500) return 'red'; else if (value < 1000) return 'yellow'; else return 'green';});
+=======
+            const col = dt.map((value) =>  {if (value > 300) return 'red'; else if (value < 300) return 'yellow'; else return 'green';});
+>>>>>>> 09f4663b872e2251498d72969b3214cce6264d50
              var datos3= {
                 type:"line",
                 data:{
@@ -131,7 +139,11 @@ include_once("../../model/connection.php");
                     pointBorderColor: col,
                     pointBorderWidth: 6,
                    data:<?php
+<<<<<<< HEAD
                         $sql="SELECT shift,SUM(`withoutlocation`) as suma,SUM(`withlocation`) as su FROM `transactios` GROUP BY `shift`";
+=======
+                        $sql="SELECT withlocation.id_shift,withoutlocation.id_shift, SUM(withlocation.num_loca) as suma,SUM(withoutlocation.num_woloca) as su FROM `withlocation`,`withoutlocation` GROUP by withoutlocation.id_shift AND withlocation.id_shift";
+>>>>>>> 09f4663b872e2251498d72969b3214cce6264d50
                         $result=mysqli_query($conexion, $sql);
                         ?>
                        [ <?php while ($registros=mysqli_fetch_array($result)){?><?php echo $registros["suma"] ?>,<?php echo $registros["su"] ?>,
@@ -139,12 +151,20 @@ include_once("../../model/connection.php");
                 }],
                 labels:[
                     <?php
+<<<<<<< HEAD
                         $sql="SELECT shift FROM transactios GROUP BY shift";
+=======
+                        $sql="SELECT id_shift FROM `withlocation` GROUP BY id_shift ";
+>>>>>>> 09f4663b872e2251498d72969b3214cce6264d50
                         $result= mysqli_query($conexion,$sql);
                         while($registros=mysqli_fetch_array($result))
                         {
                           ?>
+<<<<<<< HEAD
                         '<?php echo $registros["shift"]?>',
+=======
+                        '<?php echo $registros["id_shift"]?>',
+>>>>>>> 09f4663b872e2251498d72969b3214cce6264d50
                         <?php
                         }
                     ?>
